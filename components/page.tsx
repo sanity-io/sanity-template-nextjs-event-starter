@@ -15,7 +15,7 @@ type Meta = {
 type Props = {
   meta: Meta;
   children: React.ReactNode;
-  fullViewport: boolean;
+  fullViewport?: boolean;
 };
 
 export default function Page({ meta, children, fullViewport = false }: Props) {
