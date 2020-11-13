@@ -1,0 +1,14 @@
+.background {
+  width: 2000px;
+  height: 1000px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  width: 1700px;
+}

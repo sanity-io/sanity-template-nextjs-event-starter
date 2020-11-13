@@ -1,0 +1,92 @@
+.container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.row-wrapper {
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 24px;
+  padding: var(--space-8x) 0 0;
+  border-bottom: 1px solid var(--accents-7);
+  width: 100%;
+}
+
+.stage-name {
+  font-size: 22px;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  min-width: 220px;
+  padding-bottom: var(--space-2x);
+  position: absolute;
+  left: initial;
+  background: linear-gradient(to right, black, transparent),
+    linear-gradient(to bottom right, black, transparent 60%);
+}
+
+.n span {
+  background: linear-gradient(90deg, #ec6193 0%, #ec4b31 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.e span {
+  background: linear-gradient(90deg, #ffbc29 0%, #eadf58 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.x span {
+  background: linear-gradient(270deg, #53a0ec 0%, #57c84f 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.t span {
+  background: linear-gradient(270deg, #5200ff 0%, #c84fb5 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.talks {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.talks > div {
+  margin-right: 24px;
+}
+
+@media (min-width: 500px) {
+  .container {
+    border-top: 1px solid var(--accents-7);
+    margin-top: var(--space-4x);
+  }
+
+  .row {
+    margin: 0 var(--space-8x) 0 0;
+    flex-direction: row;
+    padding: var(--space-8x) 0;
+  }
+
+  .talks {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .stage-name {
+    font-size: var(--space-8x);
+    position: sticky;
+    left: 0;
+    padding-left: var(--space-8x);
+    z-index: 1;
+  }
+}

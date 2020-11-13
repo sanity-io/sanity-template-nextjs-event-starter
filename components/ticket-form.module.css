@@ -1,0 +1,49 @@
+.githubIcon {
+  margin-left: 12px;
+  margin-right: var(--space-4x);
+  display: inline-flex;
+}
+
+.checkIcon {
+  position: absolute;
+  right: var(--space-4x);
+  display: inline-flex;
+}
+
+.generateWithGithub {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.form-row {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+
+.description {
+  color: var(--secondary-color);
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form-row {
+    margin: 0;
+  }
+
+  .description {
+    text-align: left;
+  }
+
+  .generateWithGithub {
+    width: 100%;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Next.js Conference",
+  "short_name": "Next.js Conference",
+  "description": "Next.js Conference -> https://conference.vercel.app",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#fff",
+  "background_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
