@@ -1,0 +1,10 @@
+{
+  "name": "Next.js Conference",
+  "description": "Starter kit for an online conference.",
+  "previewImage": "TODO",
+  "datocmsProjectId": "37685",
+  "deploymentType": "vercel",
+  "buildCommand": "npm run build",
+  "datocmsApiTokenEnvName": "DATOCMS_API_TOKEN",
+  "livePreviewUrl": "https://conference.vercel.app/"
+}
