@@ -12,7 +12,7 @@ export type Speaker = {
   company: string;
   talk: Talk;
   image: Image;
-  imageSmall: Image;
+  imageSquare: Image;
 };
 
 export type Stage = {

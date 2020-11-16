@@ -30,25 +30,25 @@
     linear-gradient(to bottom right, black, transparent 60%);
 }
 
-.n span {
+.a span {
   background: linear-gradient(90deg, #ec6193 0%, #ec4b31 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.e span {
+.c span {
   background: linear-gradient(90deg, #ffbc29 0%, #eadf58 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.x span {
+.m span {
   background: linear-gradient(270deg, #53a0ec 0%, #57c84f 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.t span {
+.e span {
   background: linear-gradient(270deg, #5200ff 0%, #c84fb5 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
