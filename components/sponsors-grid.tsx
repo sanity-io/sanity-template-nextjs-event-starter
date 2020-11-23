@@ -2,24 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames';
 import { Sponsor } from '@lib/types';
-import { useConfUser } from '@lib/hooks/use-conf-user';
-import { logEvent } from '@lib/events';
 import styles from './sponsors-grid.module.css';
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
-  const { data: confUser } = useConfUser();
-
-  const viewSponsor = () => {
-    logEvent(confUser?.email, `clicked sponsor card ${sponsor.name}_card`);
-  };
-
   return (
     <Link key={sponsor.name} href={`/expo/${sponsor.slug}`}>
       <a
         role="button"
         tabIndex={0}
-        onClick={viewSponsor}
-        onKeyPress={viewSponsor}
         className={cn(styles.card, {
           [styles.diamond]: sponsor.tier === 'diamond',
           [styles.gold]: sponsor.tier === 'gold'

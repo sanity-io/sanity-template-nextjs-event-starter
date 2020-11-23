@@ -84,16 +84,7 @@
 
 .tab-active {
   color: #fff;
-  background: linear-gradient(
-      90deg,
-      #ec6192 4.44%,
-      #ec4c34 21.45%,
-      #ffbd2b 37.21%,
-      #ebde56 54.63%,
-      #57c754 70.8%,
-      #53a1eb 84.07%
-    )
-    left bottom transparent no-repeat;
+  background: linear-gradient(90deg, var(--brand), var(--brand)) left bottom transparent no-repeat;
   background-size: 100% 1px;
 }
 

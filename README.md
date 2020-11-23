@@ -4,8 +4,9 @@
 
 - [ ] Migrate API routes from next-api
 - [ ] Store users inside DatoCMS
-- [ ] Do we want events? if no, remove `logEvent` code
-- [ ] Do we want Microlink OG speaker cards?
+- [ ] Export new ticket images from Figma
+- [x] Do we want events? if no, remove `logEvent` code
+- [x] Do we want Microlink OG speaker cards?
 - [x] Set up new DatoCMS project that can be cloned
 - [ ] Need to create and add `public/twitter-card.png`
 

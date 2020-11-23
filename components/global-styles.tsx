@@ -30,6 +30,7 @@ export default function GlobalStyles() {
             --gray: #252729;
             --secondary-color: #8a8f98;
             --header-height: 72px;
+            --brand: #845ef7;
           }
 
           html {

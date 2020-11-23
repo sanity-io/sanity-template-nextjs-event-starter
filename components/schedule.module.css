@@ -26,32 +26,7 @@
   padding-bottom: var(--space-2x);
   position: absolute;
   left: initial;
-  background: linear-gradient(to right, black, transparent),
-    linear-gradient(to bottom right, black, transparent 60%);
-}
-
-.a span {
-  background: linear-gradient(90deg, #ec6193 0%, #ec4b31 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.c span {
-  background: linear-gradient(90deg, #ffbc29 0%, #eadf58 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.m span {
-  background: linear-gradient(270deg, #53a0ec 0%, #57c84f 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.e span {
-  background: linear-gradient(270deg, #5200ff 0%, #c84fb5 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--brand);
 }
 
 .talks {

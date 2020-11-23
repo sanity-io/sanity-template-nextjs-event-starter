@@ -23,7 +23,7 @@
 
 .is-live {
   background-image: linear-gradient(#111111, #111111),
-    linear-gradient(to right, #ec6192, #ec4c34, #ffbd2b, #ebde56, #57c754, #53a1eb);
+    linear-gradient(to right, var(--brand), var(--brand));
 }
 
 .card-body {

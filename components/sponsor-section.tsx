@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames';
 import { Sponsor } from '@lib/types';
-import { useConfUser } from '@lib/hooks/use-conf-user';
-import { logEvent } from '@lib/events';
 import styles from './sponsor-section.module.css';
 import styleUtils from './utils.module.css';
 
@@ -12,12 +10,6 @@ type Props = {
 };
 
 export default function SponsorSection({ sponsor }: Props) {
-  const { data: confUser } = useConfUser();
-
-  const onClick = (type: string) => {
-    logEvent(confUser?.email, `clicked booth ${sponsor.name}_${type}`);
-  };
-
   return (
     <>
       <Link href="/expo">
@@ -65,8 +57,6 @@ export default function SponsorSection({ sponsor }: Props) {
           <p className={styles.description}>{sponsor.description}</p>
           <div className={styles['sponsor-details']}>
             <a
-              onClick={() => onClick('cta_1')}
-              onKeyPress={() => onClick('cta_1')}
               href={sponsor.callToActionLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -76,8 +66,6 @@ export default function SponsorSection({ sponsor }: Props) {
               {sponsor.callToAction}
             </a>
             <a
-              onClick={() => onClick('discord')}
-              onKeyPress={() => onClick('discord')}
               href={sponsor.discord}
               target="_blank"
               rel="noopener noreferrer"
@@ -89,10 +77,8 @@ export default function SponsorSection({ sponsor }: Props) {
           </div>
           <div className={styles.resources}>
             <h2 className={styles.heading}>Resources</h2>
-            {sponsor.links.map((link, index) => (
+            {sponsor.links.map(link => (
               <a
-                onClick={() => onClick(`cta_${index + 2}`)}
-                onKeyPress={() => onClick(`cta_${index + 2}`)}
                 key={link.url}
                 href={link.url}
                 target="_blank"
@@ -117,11 +103,6 @@ export default function SponsorSection({ sponsor }: Props) {
                 </svg>
               </a>
             ))}
-            <p className={styles.disclaimer}>
-              Disclaimer: Clicking buttons on this Expo page will send your email address to this
-              sponsor, which they may use to follow up with you about Next.js Conf and related
-              offerings. Contact the sponsor to opt-out.
-            </p>
           </div>
         </div>
       </div>

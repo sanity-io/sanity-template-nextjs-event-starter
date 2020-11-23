@@ -77,15 +77,15 @@
   height: 56px;
   margin-top: var(--space-4x);
   border-radius: var(--space-2x);
-  border: 1px solid #fff;
-  background: #fff;
+  border: 1px solid var(--brand);
+  background: var(--brand);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--text-md);
   letter-spacing: -0.02em;
   outline: none;
   font-weight: 500;
-  color: #000;
+  color: white;
   transition: background-color 0.2s ease, color 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -117,12 +117,12 @@
 .submit.default:hover,
 .submit.default:focus {
   background: black;
-  color: #fff;
+  color: var(--brand);
 }
 
 .submit.default.generate-with-github:hover path,
 .submit.default.generate-with-github:focus path {
-  fill: #fff;
+  fill: var(--brand);
 }
 
 .submit.error:hover,

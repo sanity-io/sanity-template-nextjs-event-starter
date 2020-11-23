@@ -79,7 +79,7 @@
 .card:focus {
   outline: none;
   background-image: linear-gradient(#111111, #111111),
-    linear-gradient(to right, #ec6192, #ec4c34, #ffbd2b, #ebde56, #57c754, #53a1eb);
+    linear-gradient(to right, var(--brand), var(--brand));
 }
 
 .cardBody {
@@ -137,7 +137,7 @@
   border-radius: var(--space-2x);
   border: none;
   color: #fff;
-  background: #3362df;
+  background: var(--brand);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--text-md);
@@ -157,7 +157,13 @@
 .button:hover,
 .button:focus {
   background: black;
-  color: #fff;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+}
+
+.button:hover > svg,
+.button:focus > svg {
+  fill: var(--brand);
 }
 
 .button > svg {

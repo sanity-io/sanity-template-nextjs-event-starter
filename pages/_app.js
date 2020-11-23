@@ -1,5 +1,5 @@
 import { SSRProvider, OverlayProvider } from 'react-aria';
-// import NProgress from '../components/nprogress';
+import NProgress from '../components/nprogress';
 import viewportPolyfill from '../components/viewport-height';
 
 export default function App({ Component, pageProps }) {
@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
     <SSRProvider>
       <OverlayProvider>
         <Component {...pageProps} />
-        {/* <NProgress /> */}
+        <NProgress />
       </OverlayProvider>
     </SSRProvider>
   );

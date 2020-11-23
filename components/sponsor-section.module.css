@@ -165,11 +165,6 @@
   color: var(--secondary-color);
 }
 
-.disclaimer {
-  color: var(--secondary-color);
-  font-size: 12px;
-}
-
 .resources {
   display: flex;
   flex-direction: column;

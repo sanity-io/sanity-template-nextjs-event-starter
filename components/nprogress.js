@@ -26,17 +26,7 @@ export default function Progress() {
         }
 
         #nprogress .bar {
-          background: linear-gradient(
-            90deg,
-            #ec6192 4.44%,
-            #ec4c34 21.45%,
-            #ffbd2b 37.21%,
-            #ebde56 54.63%,
-            #57c754 70.8%,
-            #53a1eb 84.07%,
-            #ec6192 100%
-          );
-          animation: 5s linear infinite gradient-rotation;
+          background: #845ef7;
           position: fixed;
           z-index: 1031;
           top: 0;

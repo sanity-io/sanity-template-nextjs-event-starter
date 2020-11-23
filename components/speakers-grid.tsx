@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Speaker } from '@lib/types';
-import { useConfUser } from '@lib/hooks/use-conf-user';
-import { logEvent } from '@lib/events';
 import styles from './speakers-grid.module.css';
 
 type Props = {
@@ -10,23 +8,11 @@ type Props = {
 };
 
 export default function SpeakersGrid({ speakers }: Props) {
-  const { data: confUser } = useConfUser();
-
-  const viewSpeaker = (speaker: Speaker) => {
-    logEvent(confUser?.email, `clicked speaker card ${speaker.name}`);
-  };
-
   return (
     <div className={styles.grid}>
       {speakers.map(speaker => (
         <Link key={speaker.name} href={`/speakers/${speaker.slug}`}>
-          <a
-            role="button"
-            tabIndex={0}
-            onClick={() => viewSpeaker(speaker)}
-            onKeyPress={() => viewSpeaker(speaker)}
-            className={styles.card}
-          >
+          <a role="button" tabIndex={0} className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image
                 alt={speaker.name}
