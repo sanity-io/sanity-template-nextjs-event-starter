@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: var(--space-3x);
+  display: flex;
+  width: 3em;
+}
+
+.text {
+  line-height: 1.15;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.text-secondary {
+  color: var(--color);
+}

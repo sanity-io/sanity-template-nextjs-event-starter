@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
-import { BRAND_NAME } from '@lib/constants';
+import { BRAND_NAME, DATE } from '@lib/constants';
 
 export default function Hero() {
   const description = <>An interactive online experience by the community, free for everyone.</>;
@@ -31,7 +31,7 @@ export default function Hero() {
         {description}
       </h2>
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
-        <p>JANUARY 01, 2021</p>
+        <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>
           <strong>Online</strong>

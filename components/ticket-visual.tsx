@@ -5,6 +5,7 @@ import styles from './ticket-visual.module.css';
 import TicketProfile from './ticket-profile';
 import TicketNumber from './ticket-number';
 import TicketMono from './ticket-mono';
+import TicketInfo from './ticket-info';
 import TicketMonoMobile from './ticket-mono-mobile';
 
 type Props = {
@@ -38,6 +39,9 @@ export default function TicketVisual({
             size={size}
             ticketGenerationState={ticketGenerationState}
           />
+        </div>
+        <div className={styles.info}>
+          <TicketInfo logoTextSecondaryColor={ticketNumber ? 'var(--brand)' : undefined} />
         </div>
         {ticketNumber && (
           <div className={styles['ticket-number-wrapper']}>

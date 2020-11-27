@@ -8,7 +8,9 @@ export default function GlobalStyles() {
             --space-2x: 8px;
             --space-3x: 12px;
             --space-4x: 16px;
+            --space-6x: 24px;
             --space-8x: 32px;
+            --space-12x: 48px;
             --space-16x: 64px;
             --space-32x: 128px;
 
