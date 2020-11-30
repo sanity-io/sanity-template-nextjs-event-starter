@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants';
-import GlobalStyles from './global-styles';
 
 type Meta = {
   title: string | null;
@@ -35,6 +34,11 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
         <meta property="og:description" content={description} />
         <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />
         <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         {image && (
           <meta
             property="og:image"
@@ -43,7 +47,6 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
         )}
       </Head>
       {children}
-      <GlobalStyles />
     </div>
   );
 }

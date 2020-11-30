@@ -1,7 +1,7 @@
 .contact {
   text-align: center;
   color: var(--secondary-color);
-  margin-bottom: auto;
+  margin-bottom: var(--space-12x);
 }
 
 .contact-email {

@@ -1,7 +1,7 @@
 const API_URL = 'https://graphql.datocms.com/';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
 
-async function fetchAPI(query, { variables } = {}) {
+async function fetchAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {

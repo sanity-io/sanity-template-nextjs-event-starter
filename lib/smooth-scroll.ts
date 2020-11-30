@@ -2,7 +2,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 let installed = false;
 
-export default function scroll(opts) {
+export default function scroll(opts: ScrollToOptions) {
   if (!installed) {
     try {
       smoothscroll.polyfill();
@@ -22,7 +22,7 @@ export default function scroll(opts) {
   }
 }
 
-export const scrollTo = (el, offset = 0) => {
+export const scrollTo = (el: HTMLElement, offset = 0) => {
   scroll({
     top: el.offsetTop + offset
   });

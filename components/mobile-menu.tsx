@@ -10,11 +10,11 @@ import { FocusScope } from '@react-aria/focus';
 import { useButton } from '@react-aria/button';
 import styles from './mobile-menu.module.css';
 
-function ModalDialog(props) {
+function ModalDialog(props: Parameters<typeof useOverlay>[0] & Parameters<typeof useDialog>[0]) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
-  const ref = useRef();
+  const ref = useRef<HTMLElement | null>(null);
   const { modalProps } = useModal();
   const { overlayProps } = useOverlay(props, ref);
   const { dialogProps } = useDialog(props, ref);
@@ -44,13 +44,23 @@ function ModalDialog(props) {
 
 export default function Overlay() {
   const state = useOverlayTriggerState({});
-  const { buttonProps } = useButton({
-    onPress: () => (state.isOpen ? state.close() : state.open())
-  });
+  const ref = useRef<HTMLButtonElement | null>(null);
+  const { buttonProps } = useButton(
+    {
+      onPress: () => (state.isOpen ? state.close() : state.open())
+    },
+    ref
+  );
 
   return (
     <>
-      <button aria-label="Mobile Menu" type="button" className={styles.button} {...buttonProps}>
+      <button
+        aria-label="Mobile Menu"
+        type="button"
+        className={styles.button}
+        {...buttonProps}
+        ref={ref}
+      >
         {state.isOpen ? (
           <svg
             viewBox="0 0 24 24"

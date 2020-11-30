@@ -6,7 +6,7 @@ import { BRAND_NAME, DATE } from '@lib/constants';
 export default function Hero() {
   const description = <>An interactive online experience by the community, free for everyone.</>;
   return (
-    <>
+    <div className={styles.wrapper}>
       <h2
         className={cn(
           styleUtils.appear,
@@ -18,7 +18,8 @@ export default function Hero() {
         {description}
       </h2>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
-        The first {BRAND_NAME} global user conference
+        The first {BRAND_NAME}
+        <br className={styleUtils['show-on-desktop']} /> global user conference
       </h1>
       <h2
         className={cn(
@@ -37,6 +38,6 @@ export default function Hero() {
           <strong>Online</strong>
         </p>
       </div>
-    </>
+    </div>
   );
 }

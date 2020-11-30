@@ -1,3 +1,7 @@
+.wrapper {
+  margin-top: var(--space-12x);
+}
+
 .hero {
   font-size: 52px;
   line-height: 1.15;
@@ -44,7 +48,7 @@
     font-size: 100px;
     line-height: 1;
     font-weight: 800;
-    margin: 0 -20px 40px;
+    margin: 0 0px 40px;
   }
 
   .info {
