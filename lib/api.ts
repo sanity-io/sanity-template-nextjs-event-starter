@@ -1,5 +1,8 @@
+import { SiteClient, ApiException } from 'datocms-client';
+
 const API_URL = 'https://graphql.datocms.com/';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
+const datoCmsClient = new SiteClient(API_TOKEN);
 
 async function fetchAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
   const res = await fetch(API_URL, {
@@ -125,4 +128,43 @@ export async function getAllJobs() {
   `);
 
   return data.allJobs;
+}
+
+/**
+ * Updates the `nextTicketNumber` counter using optimistic-locking.
+ * @see https://www.datocms.com/docs/content-management-api/resources/item/update
+ */
+async function getNextTicketNumberAndIncrement(): Promise<number> {
+  const config = await datoCmsClient.items.all({
+    filter: {
+      type: 'config'
+    }
+  })[0];
+
+  if (!config || !config.nextTicketNumber) {
+    throw new Error('Failed to fetch config');
+  }
+
+  try {
+    await datoCmsClient.items.update(config.id, {
+      nextTicketNumber: config.nextTicketNumber + 1,
+      meta: { currentVersion: config.meta.currentVersion }
+    });
+    return config.nextTicketNumber;
+  } catch (e) {
+    if (e instanceof ApiException && e.errorWithCode('STALE_ITEM_VERSION')) {
+      return await getNextTicketNumberAndIncrement();
+    }
+    throw e;
+  }
+}
+
+export async function createUser(email: string) {
+  // TODO: Check race conditions and verify that this ticketNumber would be unique
+  const ticketNumber = await getNextTicketNumberAndIncrement();
+  await datoCmsClient.items.create({
+    itemType: 'user',
+    email,
+    ticketNumber
+  });
 }
