@@ -4,10 +4,6 @@
 
 - [ ] Migrate API routes from next-api
 - [ ] Store users inside DatoCMS
-- [ ] Export new ticket images from Figma
-- [x] Do we want events? if no, remove `logEvent` code
-- [x] Do we want Microlink OG speaker cards?
-- [x] Set up new DatoCMS project that can be cloned
 - [ ] Need to create and add `public/twitter-card.png`
 
 Next Conference is an all-in-one starter kit to run your online conference. It was used to run Next Conf 2020, which had almost 40,000 live attendees. The entirety of this this platform can be run **100% free**. It includes the following features:
