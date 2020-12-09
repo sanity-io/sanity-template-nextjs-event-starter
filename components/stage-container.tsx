@@ -1,6 +1,5 @@
 import useSWR from 'swr';
 import cn from 'classnames';
-import { formatDistanceToNowStrict, parseISO } from 'date-fns';
 import { Stage } from '@lib/types';
 import { useConfUser } from '@lib/hooks/use-conf-user';
 import styles from './stage-container.module.css';
@@ -18,16 +17,10 @@ export default function StageContainer({ stage, allStages }: Props) {
     initialData: allStages,
     refreshInterval: 5000
   });
-  const discord = useSWR(`/api/discord-message?stage=${stage.slug}`, {
-    refreshInterval: process.env.NODE_ENV === 'production' ? 5000 : 60 * 1000
-  });
 
   const updatedStages = response.data || [];
   const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
   const { data: confUser } = useConfUser();
-
-  const message = discord.data;
-  const showMessage = message && !message.error;
 
   return (
     <div className={styles.container}>
@@ -44,20 +37,7 @@ export default function StageContainer({ stage, allStages }: Props) {
             />
             <div className={cn(styles.bottom, styleUtils.appear, styleUtils['appear-second'])}>
               <div className={styles.messageContainer}>
-                <h2 className={styles.stageName}>
-                  {stage.name}
-                  {showMessage && <div className={styles.separator} />}
-                </h2>
-                {showMessage && (
-                  <p className={styles.message}>
-                    <b className={styles.username}>{`${message.username}:`}</b>
-                    <span title={message.content}>{message.content}</span>
-                    <span className={styles.timestamp}>
-                      {formatDistanceToNowStrict(parseISO(message.timestamp))}
-                      {' ago'}
-                    </span>
-                  </p>
-                )}
+                <h2 className={styles.stageName}>{stage.name}</h2>
               </div>
               <a
                 href={updatedStage.discord}

@@ -54,21 +54,6 @@ export default function ConfEntry() {
           return;
         }
 
-        fetch(`${API_URL}/conf-webhook`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: emailInput,
-            referrer: document.referrer,
-            queryParams: window.location.search
-          })
-        }).catch(err => {
-          // No need to handle the errors for conf-webhook
-          console.error(err);
-        });
-
         setCookie(emailInput);
         revalidateConfUser();
       } catch (err) {
