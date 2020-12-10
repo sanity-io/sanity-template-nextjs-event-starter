@@ -12,30 +12,26 @@ type Props = {
   showTime: boolean;
 };
 
+const formatDate = (date: string) => {
+  // https://github.com/date-fns/date-fns/issues/946
+  return format(parseISO(date), "h:mmaaaaa'm'");
+};
+
 export default function TalkCard({ talk: { title, speaker, start, end }, showTime }: Props) {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isTalkLive, setIsTalkLive] = useState(false);
+  const [startAndEndTime, setStartAndEndTime] = useState('');
 
   useEffect(() => {
-    setIsMounted(true);
+    const now = Date.now();
+    setIsTalkLive(isAfter(now, parseISO(start)) && isBefore(now, parseISO(end)));
+    setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)}`);
   }, []);
-
-  const formatDate = (date: string) => {
-    // https://github.com/date-fns/date-fns/issues/946
-    return format(parseISO(date), "h:mmaaaaa'm'");
-  };
-
-  const now = Date.now();
-  const isTalkLive = isAfter(now, parseISO(start)) && isBefore(now, parseISO(end));
 
   const firstSpeakerLink = `/speakers/${speaker[0].slug}`;
 
   return (
     <div key={title} className={styles.talk}>
-      {showTime && (
-        <p className={styles.time}>
-          {!isMounted ? '–' : `${formatDate(start)} – ${formatDate(end)}`}
-        </p>
-      )}
+      {showTime && <p className={styles.time}>{startAndEndTime || <>&nbsp;</>}</p>}
       <Link href={firstSpeakerLink}>
         <a
           className={cn(styles.card, {
