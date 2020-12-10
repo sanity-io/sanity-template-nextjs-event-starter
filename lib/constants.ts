@@ -12,6 +12,7 @@ export const FULL_DATE = 'Oct 27th 9am Pacific Time (GMT-7)';
 export const LEGAL = 'https://www.vercel.com';
 export const CODE_OF_CONDUCT = 'https://www.vercel.com';
 export const GUIDELINES = 'https://www.vercel.com';
+export const COOKIE_NAME = 'conf-email';
 export const NAVIGATION = [
   {
     name: 'Stage A',

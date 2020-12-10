@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { useCallback, useState } from 'react';
-import Cookies from 'js-cookie';
-import { useConfUser } from '@lib/hooks/use-conf-user';
+import useConfUser from '@lib/hooks/use-conf-user';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
@@ -20,16 +19,12 @@ function getErrorMsg(code: string) {
   }
 }
 
-function setCookie(email: string) {
-  Cookies.set('conf-email', email, { expires: 7 });
-}
-
 export default function ConfEntry() {
   const [emailInput, setEmailInput] = useState('');
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
-  const { revalidate: revalidateConfUser } = useConfUser();
+  const { updateConfUser } = useConfUser();
 
   const onSubmit = useCallback(
     async e => {
@@ -52,15 +47,14 @@ export default function ConfEntry() {
           return;
         }
 
-        setCookie(emailInput);
-        revalidateConfUser();
+        await updateConfUser(emailInput);
       } catch (err) {
         console.error(err);
         setErrorMsg(DEFAULT_ERROR_MSG);
         setFormState('error');
       }
     },
-    [emailInput, revalidateConfUser]
+    [emailInput, updateConfUser]
   );
 
   useEmailQueryParam('login', setEmailInput);

@@ -1,5 +1,6 @@
 import useSWR, { ConfigInterface } from 'swr';
 import Cookies from 'js-cookie';
+import { COOKIE_NAME } from '@lib/constants';
 import { ConfUser } from '@lib/types';
 
 async function auth(email: string): Promise<ConfUser | undefined> {
@@ -22,13 +23,13 @@ async function auth(email: string): Promise<ConfUser | undefined> {
   return res.json();
 }
 
-export function useConfUser(opts?: ConfigInterface) {
-  return useSWR<ConfUser | undefined | null, any>(
+export default function useConfUser(opts?: ConfigInterface) {
+  const { data, mutate } = useSWR<ConfUser | undefined | null>(
     `${process.env.API_URL || ''}/api/user`,
-    () => {
-      const email = Cookies.get('conf-email');
+    async () => {
+      const email = Cookies.get(COOKIE_NAME);
       if (email) {
-        return auth(email);
+        return await auth(email);
       }
       return null;
     },
@@ -37,4 +38,12 @@ export function useConfUser(opts?: ConfigInterface) {
       revalidateOnFocus: false
     }
   );
+
+  return {
+    confUser: data,
+    updateConfUser: async (email: string) => {
+      Cookies.set(COOKIE_NAME, email, { expires: 7 });
+      await mutate();
+    }
+  };
 }

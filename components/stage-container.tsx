@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import cn from 'classnames';
 import { Stage } from '@lib/types';
-import { useConfUser } from '@lib/hooks/use-conf-user';
+import useConfUser from '@lib/hooks/use-conf-user';
 import styles from './stage-container.module.css';
 import styleUtils from './utils.module.css';
 import ScheduleSidebar from './schedule-sidebar';
@@ -20,7 +20,7 @@ export default function StageContainer({ stage, allStages }: Props) {
 
   const updatedStages = response.data || [];
   const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
-  const { data: confUser } = useConfUser();
+  const { confUser } = useConfUser();
 
   return (
     <div className={styles.container}>
