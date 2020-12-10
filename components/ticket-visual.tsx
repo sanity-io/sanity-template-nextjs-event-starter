@@ -1,4 +1,4 @@
-import { TicketGenerationState } from '@lib/conf';
+import { TicketGenerationState } from '@lib/constants';
 import TicketColoredMobile from './ticket-colored-mobile';
 import TicketColored from './ticket-colored';
 import styles from './ticket-visual.module.css';

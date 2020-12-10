@@ -1,8 +1,7 @@
 import cn from 'classnames';
 import VercelLogo from '@components/icons/icon-platform';
-import { guidelinesUrl, codeOfConductUrl, legalUrl } from '@lib/conf';
 import styles from './footer.module.css';
-import { SITE_NAME, SITE_URL } from '@lib/constants';
+import { SITE_NAME, SITE_URL, GUIDELINES, CODE_OF_CONDUCT, LEGAL } from '@lib/constants';
 
 export function HostedByVercel() {
   return (
@@ -42,7 +41,7 @@ export default function Footer() {
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
             <a
-              href={codeOfConductUrl}
+              href={CODE_OF_CONDUCT}
               className={styles['footer-link']}
               target="_blank"
               rel="noopener noreferrer"
@@ -53,7 +52,7 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
           <p className={styles['footer-paragraph']}>
             <a
-              href={legalUrl}
+              href={LEGAL}
               className={styles['footer-link']}
               target="_blank"
               rel="noopener noreferrer"
@@ -64,7 +63,7 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
           <p className={styles['footer-paragraph']}>
             <a
-              href={guidelinesUrl}
+              href={GUIDELINES}
               className={styles['footer-link']}
               target="_blank"
               rel="noopener noreferrer"

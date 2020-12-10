@@ -1,4 +1,4 @@
-import { TicketGenerationState } from '@lib/conf';
+import { TicketGenerationState } from '@lib/constants';
 import GithubIcon from '@components/icons/icon-github';
 import cn from 'classnames';
 import IconAvatar from './icons/icon-avatar';

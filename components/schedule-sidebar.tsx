@@ -28,7 +28,7 @@ export default function ScheduleSidebar({ allStages }: Props) {
     <div className={styles.schedule}>
       <h3 className={styles.header}>Schedule</h3>
       <p>
-        Oct 27 - {formatDate('2020-10-27T09:00:00-07:00')}{' '}
+        Jan 1 - {formatDate('2020-10-27T09:00:00-07:00')}{' '}
         {new Date().toLocaleTimeString([], { timeZoneName: 'short' }).split(' ').pop()}
       </p>
       <Select

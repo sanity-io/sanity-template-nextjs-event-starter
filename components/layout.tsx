@@ -2,7 +2,7 @@ import Link from 'next/link';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
-import { navigation } from '@lib/conf';
+import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
 import MobileMenu from './mobile-menu';
@@ -33,7 +33,7 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
             </Link>
           </div>
           <div className={styles.tabs}>
-            {navigation.map(({ name, route }) => (
+            {NAVIGATION.map(({ name, route }) => (
               <Link key={name} href={route}>
                 <a
                   className={cn(styles.tab, {

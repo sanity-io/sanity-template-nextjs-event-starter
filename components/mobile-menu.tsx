@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import cn from 'classnames';
-import { navigation } from '@lib/conf';
+import { NAVIGATION } from '@lib/constants';
 import { useOverlayTriggerState } from '@react-stately/overlays';
 import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays';
 import { useDialog } from '@react-aria/dialog';
@@ -25,7 +25,7 @@ function ModalDialog(props: Parameters<typeof useOverlay>[0] & Parameters<typeof
     <div className={styles['nav-overlay']}>
       <FocusScope contain restoreFocus autoFocus>
         <nav className={styles.nav} {...overlayProps} {...dialogProps} {...modalProps} ref={ref}>
-          {navigation.map(({ name, route }) => (
+          {NAVIGATION.map(({ name, route }) => (
             <Link key={name} href={route}>
               <a
                 className={cn(styles['nav-item'], {
