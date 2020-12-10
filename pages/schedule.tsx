@@ -5,7 +5,7 @@ import Schedule from '@components/schedule';
 import Layout from '@components/layout';
 import Header from '@components/header';
 
-import { getAllStages } from '@lib/api';
+import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { FULL_DATE } from '@lib/constants';
 

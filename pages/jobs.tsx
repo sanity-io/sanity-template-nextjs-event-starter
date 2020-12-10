@@ -5,7 +5,7 @@ import JobsGrid from '@components/jobs-grid';
 import Layout from '@components/layout';
 import Header from '@components/header';
 
-import { getAllJobs } from '@lib/api';
+import { getAllJobs } from '@lib/cms-api';
 import { Job } from '@lib/types';
 
 type Props = {
@@ -13,15 +13,15 @@ type Props = {
 };
 
 export default function Jobs({ jobs }: Props) {
-  const meta = {title: "Career Fair", description: "Find the best jobs from companies using our product." }
+  const meta = {
+    title: 'Career Fair',
+    description: 'Find the best jobs from companies using our product.'
+  };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <Header
-          hero={meta.title}
-          description={meta.description}
-        />
+        <Header hero={meta.title} description={meta.description} />
         <JobsGrid jobs={jobs} />
       </Layout>
     </Page>

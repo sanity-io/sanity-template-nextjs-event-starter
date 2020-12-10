@@ -5,7 +5,7 @@ import SponsorsGrid from '@components/sponsors-grid';
 import Header from '@components/header';
 import Layout from '@components/layout';
 
-import { getAllSponsors } from '@lib/api';
+import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
 
 type Props = {

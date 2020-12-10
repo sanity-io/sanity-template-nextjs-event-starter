@@ -4,7 +4,7 @@ import Page from '@components/page';
 import StageContainer from '@components/stage-container';
 import Layout from '@components/layout';
 
-import { getAllStages } from '@lib/api';
+import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { SITE_NAME } from '@lib/constants';
 
@@ -14,7 +14,10 @@ type Props = {
 };
 
 export default function StagePage({ stage, allStages }: Props) {
-  const meta = {title: stage.name, description: `Watch talks from ${SITE_NAME} live on ${stage.name}.` }
+  const meta = {
+    title: stage.name,
+    description: `Watch talks from ${SITE_NAME} live on ${stage.name}.`
+  };
 
   return (
     <Page meta={meta} fullViewport>

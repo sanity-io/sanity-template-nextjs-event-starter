@@ -1,6 +1,6 @@
 import ms from 'ms';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAllStages } from '@lib/api';
+import { getAllStages } from '@lib/cms-api';
 
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5;

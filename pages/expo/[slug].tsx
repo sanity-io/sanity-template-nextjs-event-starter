@@ -4,7 +4,7 @@ import Page from '@components/page';
 import SponsorSection from '@components/sponsor-section';
 import Layout from '@components/layout';
 
-import { getAllSponsors } from '@lib/api';
+import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
 
 type Props = {
@@ -12,8 +12,8 @@ type Props = {
 };
 
 export default function SponsorPage({ sponsor }: Props) {
-  const meta = {title: sponsor.name, description: sponsor.description }
-  
+  const meta = { title: sponsor.name, description: sponsor.description };
+
   return (
     <Page meta={meta}>
       <Layout>

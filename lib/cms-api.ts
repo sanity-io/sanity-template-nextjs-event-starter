@@ -1,7 +1,7 @@
 const API_URL = 'https://graphql.datocms.com/';
 const API_TOKEN = process.env.DATOCMS_API_TOKEN;
 
-async function fetchAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
+async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -25,7 +25,7 @@ async function fetchAPI(query: string, { variables }: { variables?: Record<strin
 }
 
 export async function getAllSpeakers() {
-  const data = await fetchAPI(`
+  const data = await fetchCmsAPI(`
     {
       allSpeakers(first: 100) {
         name
@@ -53,7 +53,7 @@ export async function getAllSpeakers() {
 }
 
 export async function getAllStages() {
-  const data = await fetchAPI(`
+  const data = await fetchCmsAPI(`
     {
       allStages(first: 100, orderBy: order_ASC) {
         name
@@ -80,7 +80,7 @@ export async function getAllStages() {
 }
 
 export async function getAllSponsors() {
-  const data = await fetchAPI(`
+  const data = await fetchCmsAPI(`
     {
       allCompanies(first: 100, orderBy: tierRank_ASC) {
         name
@@ -110,7 +110,7 @@ export async function getAllSponsors() {
 }
 
 export async function getAllJobs() {
-  const data = await fetchAPI(`
+  const data = await fetchCmsAPI(`
     {
       allJobs(first: 100, orderBy: rank_ASC) {
         id

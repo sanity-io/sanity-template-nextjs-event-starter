@@ -4,7 +4,7 @@ import Page from '@components/page';
 import SpeakerSection from '@components/speaker-section';
 import Layout from '@components/layout';
 
-import { getAllSpeakers } from '@lib/api';
+import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function SpeakerPage({ speaker }: Props) {
-  const meta = {title: speaker.name, description: speaker.bio }
+  const meta = { title: speaker.name, description: speaker.bio };
 
   return (
     <Page meta={meta}>
