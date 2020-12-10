@@ -1,12 +1,12 @@
 import cn from 'classnames';
-import { useCallback, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useCallback, useState } from 'react';
 import Cookies from 'js-cookie';
 import { API_URL } from '@lib/constants';
 import { useConfUser } from '@lib/hooks/use-conf-user';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
+import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -31,7 +31,6 @@ export default function ConfEntry() {
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
   const { revalidate: revalidateConfUser } = useConfUser();
-  const router = useRouter();
 
   const onSubmit = useCallback(
     async e => {
@@ -65,25 +64,7 @@ export default function ConfEntry() {
     [emailInput, revalidateConfUser]
   );
 
-  useEffect(() => {
-    if ('URLSearchParams' in window) {
-      const { search, pathname } = window.location;
-      const params = new URLSearchParams(search);
-      const email = params.get('login');
-      if (email) {
-        setEmailInput(email);
-        params.delete('login');
-        const newSearch = params.toString();
-        const newAsPath = pathname + (newSearch ? `?${newSearch}` : '');
-        const newPathname = router.pathname + (newSearch ? `?${newSearch}` : '');
-        history.replaceState(
-          { url: newPathname, as: newAsPath, options: { shallow: true } },
-          '',
-          newAsPath
-        );
-      }
-    }
-  }, [router]);
+  useEmailQueryParam('login', setEmailInput);
 
   const onTryAgainClick = useCallback(e => {
     e.preventDefault();

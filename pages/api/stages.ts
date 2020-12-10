@@ -5,7 +5,7 @@ import { getAllStages } from '@lib/api';
 // Number of seconds to cache the API response for
 const EXPIRES_SECONDS = 5;
 
-export default async function getStages(req: NextApiRequest, res: NextApiResponse) {
+export default async function getStages(_: NextApiRequest, res: NextApiResponse) {
   try {
     const allStages = await getAllStages();
 
