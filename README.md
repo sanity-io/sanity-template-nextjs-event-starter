@@ -1,6 +1,6 @@
 # Next Conference
 
-Next Conference is an all-in-one starter kit to run your online conference. It was used to run Next.js Conf 2020, which had almost 40,000 live attendees. The entirety of this this platform can be run for free. It includes the following features:
+Next Conference is a starter kit to run your online conference. It was used to run Next.js Conf 2020, which had almost 40,000 live attendees. The entirety of this this platform can be run for free. It includes the following features:
 
 - Multiple stages with an embedded YouTube stream
 - Sponsor expo, including individual virtual booths
@@ -13,7 +13,7 @@ This platform is built upon three principles:
 
 - **Delegation:** Running a conference is difficult – you have to **delegate** tasks to third-parties to ensure success. Certain elements of an online conference experience are tough to get right, and we'd rather lean on established, industry leading solutions.
 - **Flexibility:** While delegating certain elements of the conference experience is helpful, it's also important to own the platform. That's why this template provides a **flexible** open-source codebase that can be modified for your event.
-- **Reducing Risk:** It's inevitable something will go wrong during your event. This platform **reduces risk** by leaning on a dynamic site that outputs as static files. These static files are cached, ensuring your site is never down. Then, it uses [Serverless Functions](https://vercel.com/docs/serverless-functions/introduction) to sprinkle dynamic content on top, which are hosted by a provider with 99.999% uptime.
+- **Reducing Risk:** It's inevitable something will go wrong during your event. This platform **reduces risk** by leaning on a dynamic site that outputs as static files. These static files are cached, ensuring your site is never down. Then, it uses [Serverless Functions](https://vercel.com/docs/serverless-functions/introduction) to sprinkle dynamic content on top, which are hosted by a provider with 99.99% uptime.
 
 ### Built With
 
@@ -33,7 +33,11 @@ This platform is built upon three principles:
 
 ### Stages
 
-There are four different stages included in the seed data. You are feel to add or remove these based on your schedule. Each stage requires the user to entry their email to register with the conference before entering the event. After successfully entering their email and saving the user with your database of choice, the user is able to view the embedded YouTube stream. The login state is persisted in local storage.
+There are four different stages included in the seed data. You are feel to add or remove these based on your schedule. Each stage requires the user to enter their email to register with the conference before entering the event. After successfully entering their email and saving the user with your database of choice, the user is able to view the embedded YouTube stream. The login state is persisted as a cookie.
+
+One major feature of the conference platform is a near real-time sync with DatoCMS. Every five seconds, the stage queries `/api/stages` to fetch the latest information from the CMS. This allows you to make changes on the fly, without the user having the refresh the page. No need for websockets.
+
+The primary use case for this is updating the YouTube embedded URL. Next.js Conf used this to seamlessly switch between pre-recorded videos running as a live premiere, and truly live content (e.g. panels). Plus, we had a few instances where our schedule needed to be tweaked on the fly. This implementation is fault tolerant, as well. The API route is properly cached and if the CMS was to somewhow go down, it won't break the page.
 
 ### Schedule / Speaker Pages
 
