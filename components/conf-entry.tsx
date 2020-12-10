@@ -4,6 +4,7 @@ import useConfUser from '@lib/hooks/use-conf-user';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
+import { register } from '@lib/user-api';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 
 type FormState = 'default' | 'loading' | 'error';
@@ -32,13 +33,7 @@ export default function ConfEntry() {
         e.preventDefault();
         setFormState('loading');
 
-        const res = await fetch(`${process.env.API_URL || ''}/api/register`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email: emailInput })
-        });
+        const res = await register(emailInput);
 
         if (!res.ok) {
           const json = await res.json();

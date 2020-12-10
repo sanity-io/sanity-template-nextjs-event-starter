@@ -2,15 +2,10 @@ import useSWR, { ConfigInterface } from 'swr';
 import Cookies from 'js-cookie';
 import { COOKIE_NAME } from '@lib/constants';
 import { ConfUser } from '@lib/types';
+import { auth } from '@lib/user-api';
 
-async function auth(email: string): Promise<ConfUser | undefined> {
-  const res = await fetch(`${process.env.API_URL || ''}/api/user`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email })
-  });
+async function authFetcher(email: string): Promise<ConfUser | undefined> {
+  const res = await auth(email);
 
   if (!res.ok) {
     if (res.status === 401) return;
@@ -29,7 +24,7 @@ export default function useConfUser(opts?: ConfigInterface) {
     async () => {
       const email = Cookies.get(COOKIE_NAME);
       if (email) {
-        return await auth(email);
+        return await authFetcher(email);
       }
       return null;
     },

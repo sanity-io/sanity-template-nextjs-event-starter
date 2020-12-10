@@ -8,6 +8,7 @@ import LoadingDots from './loading-dots';
 import styleUtils from './utils.module.css';
 import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
+import { register } from '@lib/user-api';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -59,15 +60,7 @@ export default function Form({ sharePage }: Props) {
       onSubmit={e => {
         if (formState === 'default') {
           setFormState('loading');
-          fetch(`${process.env.API_URL || ''}/api/register`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email
-            })
-          })
+          register(email)
             .then(async res => {
               if (!res.ok) {
                 throw new FormError(res);

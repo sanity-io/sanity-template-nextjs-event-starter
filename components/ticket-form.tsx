@@ -9,6 +9,7 @@ import useConfData from '@lib/hooks/use-conf-data';
 import LoadingDots from './loading-dots';
 import formStyles from './form.module.css';
 import ticketFormStyles from './ticket-form.module.css';
+import { githubOAuth } from '@lib/user-api';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -105,16 +106,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
               return;
             }
 
-            const res = await fetch('/api/github-oauth', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                id: userData.id,
-                token: data.token
-              })
-            });
+            const res = await githubOAuth({ id: userData.id, token: data.token });
 
             if (!res.ok) {
               throw new Error('Failed to store oauth result');
