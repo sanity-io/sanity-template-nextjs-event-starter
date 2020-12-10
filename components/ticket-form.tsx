@@ -82,7 +82,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
           const interval = setInterval(() => {
             if (!openedWindow || openedWindow.closed) {
               clearInterval(interval);
-              resolve();
+              resolve(undefined);
             }
           }, 250);
 
