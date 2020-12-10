@@ -160,7 +160,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
         >
           <div className={ticketFormStyles.generateWithGithub}>
             <span className={ticketFormStyles.githubIcon}>
-              <GithubIcon color="#000" size={24} />
+              <GithubIcon color="#fff" size={24} />
             </span>
             {formState === 'loading' ? (
               <LoadingDots size={4} />
@@ -170,7 +170,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
           </div>
           {username ? (
             <span className={ticketFormStyles.checkIcon}>
-              <CheckIcon color="#000" size={24} />
+              <CheckIcon color="#fff" size={24} />
             </span>
           ) : null}
         </button>
