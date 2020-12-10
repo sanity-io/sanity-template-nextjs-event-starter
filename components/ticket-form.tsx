@@ -3,12 +3,8 @@ import { scrollTo } from '@lib/smooth-scroll';
 import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
 import CheckIcon from '@components/icons/icon-check';
-import {
-  CONF_OAUTH_CALLBACK_URL,
-  API_URL,
-  TicketGenerationState,
-  isMobileOrTablet
-} from '@lib/constants';
+import { CONF_OAUTH_CALLBACK_URL, API_URL, TicketGenerationState } from '@lib/constants';
+import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import useConfData from '@lib/hooks/use-conf-data';
 import LoadingDots from './loading-dots';
 import formStyles from './form.module.css';
