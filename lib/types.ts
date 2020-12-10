@@ -64,3 +64,12 @@ export type Job = {
   link: string;
   rank: number;
 };
+
+export type ConfUser = {
+  id: string;
+  email: string;
+  ticketNumber: number;
+  name?: string;
+  username?: string;
+  createdAt: number;
+};

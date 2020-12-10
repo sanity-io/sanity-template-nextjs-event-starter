@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { useCallback, useState } from 'react';
 import Cookies from 'js-cookie';
-import { API_URL } from '@lib/constants';
 import { useConfUser } from '@lib/hooks/use-conf-user';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
@@ -38,7 +37,7 @@ export default function ConfEntry() {
         e.preventDefault();
         setFormState('loading');
 
-        const res = await fetch(`${API_URL}/conf-email`, {
+        const res = await fetch(`${process.env.API_URL || ''}/api/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

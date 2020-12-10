@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import cn from 'classnames';
-import { API_URL } from '@lib/constants';
 import useConfData from '@lib/hooks/use-conf-data';
 import { useRouter } from 'next/router';
 import FormError from '@lib/form-error';
@@ -58,7 +57,7 @@ export default function Form({ sharePage }: Props) {
       onSubmit={e => {
         if (formState === 'default') {
           setFormState('loading');
-          fetch(`${API_URL}/conf-email`, {
+          fetch(`${process.env.API_URL || ''}/api/register`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

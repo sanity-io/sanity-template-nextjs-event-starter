@@ -1,26 +1,16 @@
 import useSWR, { ConfigInterface } from 'swr';
 import Cookies from 'js-cookie';
-import { API_URL } from '@lib/constants';
-
-const URL = `${API_URL}/conf-auth`;
-
-export interface ConfUser {
-  id: string;
-  email: string;
-  ticketNumber: number;
-  name: string;
-  username: string;
-  createdAt: number;
-}
+import { ConfUser } from '@lib/types';
 
 async function auth(email: string): Promise<ConfUser | undefined> {
-  const res = await fetch(URL, {
+  const res = await fetch(`${process.env.API_URL || ''}/api/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email })
   });
+
   if (!res.ok) {
     if (res.status === 401) return;
 
@@ -34,7 +24,7 @@ async function auth(email: string): Promise<ConfUser | undefined> {
 
 export function useConfUser(opts?: ConfigInterface) {
   return useSWR<ConfUser | undefined | null, any>(
-    URL,
+    `${process.env.API_URL || ''}/api/user`,
     () => {
       const email = Cookies.get('conf-email');
       if (email) {

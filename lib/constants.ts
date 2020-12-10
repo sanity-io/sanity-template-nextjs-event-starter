@@ -1,5 +1,4 @@
 export const SITE_URL = 'https://conference.vercel.app';
-export const API_URL = 'https://api.nextjs.org/api';
 export const CONF_OAUTH_CALLBACK_URL = 'https://api.nextjs.org';
 export const TWITTER_USER_NAME = 'vercel';
 export const BRAND_NAME = 'ACME';

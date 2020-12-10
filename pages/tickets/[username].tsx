@@ -5,7 +5,7 @@ import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '@components/page';
 import ConfContent from '@components/index';
-import { SITE_URL, API_URL, TICKET_IMAGE_URL, SITE_NAME } from '@lib/constants';
+import { SITE_URL, TICKET_IMAGE_URL, SITE_NAME } from '@lib/constants';
 
 type Props = {
   username: string | null;
@@ -49,7 +49,16 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const username = params?.username?.toString() || null;
 
   if (username) {
-    const res = await fetch(`${API_URL}/conf-user?username=${params?.username?.toString()}`);
+    const res = await fetch(`${process.env.API_URL || ''}/api/user`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: params?.username?.toString()
+      })
+    });
+
     if (res.ok) {
       const { name, ticketNumber } = await res.json();
       return {

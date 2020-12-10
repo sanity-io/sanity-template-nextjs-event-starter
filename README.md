@@ -26,7 +26,7 @@ This platform is built upon three principles:
 
 ### Deploy Your Own
 
-1. First, created a GitHub application to use for authentication.
+1. First, create a [GitHub OAuth application](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app) to use for authentication.
 2. Then, provide the OAuth Client ID and secret during the Vercel import flow.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/conference/tree/main/&project-name=next-conference&repository-name=conference&demo-title=Next.js%20Conference&demo-description=All-in-one%20starter%20kit%20to%20run%20your%20online%20conference&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/conference%22})
