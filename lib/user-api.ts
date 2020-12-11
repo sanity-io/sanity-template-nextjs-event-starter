@@ -18,7 +18,7 @@ export async function auth(email: string) {
   });
 }
 
-export async function githubOAuth({ id, token }: { id?: string; token: string }) {
+export async function saveGithubToken({ id, token }: { id?: string; token: string }) {
   return await fetch('/api/github-oauth', {
     method: 'POST',
     headers: {

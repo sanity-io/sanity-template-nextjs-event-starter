@@ -3,13 +3,14 @@ import { scrollTo } from '@lib/smooth-scroll';
 import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
 import CheckIcon from '@components/icons/icon-check';
-import { CONF_OAUTH_CALLBACK_URL, TicketGenerationState } from '@lib/constants';
+import { SITE_ORIGIN, TicketGenerationState } from '@lib/constants';
 import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import useConfData from '@lib/hooks/use-conf-data';
 import LoadingDots from './loading-dots';
 import formStyles from './form.module.css';
 import ticketFormStyles from './ticket-form.module.css';
-import { githubOAuth } from '@lib/user-api';
+import { saveGithubToken } from '@lib/user-api';
+import { GitHubOAuthData } from '@lib/types';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -58,7 +59,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
         setFormState('loading');
         setTicketGenerationState('loading');
 
-        if (!process.env.NEXT_PUBLIC_CONF_GITHUB_OAUTH_CLIENT_ID) {
+        if (!process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID) {
           setFormState('error');
           // Message for OS contributors
           setErrorMsg('Only enabled for production deployments.');
@@ -73,13 +74,13 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
 
         const openedWindow = window.open(
           `https://github.com/login/oauth/authorize?client_id=${encodeURIComponent(
-            process.env.NEXT_PUBLIC_CONF_GITHUB_OAUTH_CLIENT_ID
+            process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID
           )}`,
           'githubOAuth',
           `resizable,scrollbars,status,width=${windowWidth},height=${windowHeight},top=${windowTop},left=${windowLeft}`
         );
 
-        new Promise<{ token: string } | undefined>(resolve => {
+        new Promise<GitHubOAuthData | undefined>(resolve => {
           const interval = setInterval(() => {
             if (!openedWindow || openedWindow.closed) {
               clearInterval(interval);
@@ -89,7 +90,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
 
           window.addEventListener('message', function onMessage(msgEvent) {
             // When devtools is opened the message may be received multiple times
-            if (CONF_OAUTH_CALLBACK_URL !== msgEvent.origin || !msgEvent.data.token) {
+            if (SITE_ORIGIN !== msgEvent.origin || !msgEvent.data.type) {
               return;
             }
             clearInterval(interval);
@@ -106,13 +107,22 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
               return;
             }
 
-            const res = await githubOAuth({ id: userData.id, token: data.token });
+            let usernameFromResponse: string;
+            let name: string;
+            if (data.type === 'token') {
+              const res = await saveGithubToken({ id: userData.id, token: data.token });
 
-            if (!res.ok) {
-              throw new Error('Failed to store oauth result');
+              if (!res.ok) {
+                throw new Error('Failed to store oauth result');
+              }
+
+              const responseJson = await res.json();
+              usernameFromResponse = responseJson.username;
+              name = responseJson.name;
+            } else {
+              usernameFromResponse = data.login;
+              name = data.name;
             }
-
-            const { username: usernameFromResponse, name } = await res.json();
 
             document.body.classList.add('ticket-generated');
             setUserData({ ...userData, username: usernameFromResponse, name });
