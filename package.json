@@ -5,7 +5,7 @@
   "repository": "vercel/conference",
   "author": "Vercel",
   "homepage": "https://conference.vercel.app",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "node": "12.x"
   },
