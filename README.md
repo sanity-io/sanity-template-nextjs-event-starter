@@ -1,6 +1,6 @@
-# Next Conference
+# Online Event Starter Kit
 
-Next Conference is a starter kit to run your online conference. It was used to run Next.js Conf 2020, which had almost 40,000 live attendees. The entirety of this this platform can be run for free. It includes the following features:
+This online event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees. It includes the following features:
 
 - Multiple stages with an embedded YouTube stream
 - Sponsor expo, including individual virtual booths
@@ -22,14 +22,37 @@ This platform is built upon three principles:
   - [TypeScript](https://nextjs.org/docs/basic-features/typescript)
 - CMS: [DatoCMS](https://www.datocms.com)
 - Videos: [YouTube](https://www.youtube.com)
-- Hosting/Deployment: [Vercel](https://vercel.com)
+- Deployment: [Vercel](https://vercel.com)
 
-### Deploy Your Own
+## Running Locally
+
+First, run the development server:
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy Your Own
 
 1. First, create a [GitHub OAuth application](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app) to use for authentication.
 2. Then, provide the OAuth Client ID and secret during the Vercel import flow.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/conference/tree/main/&project-name=next-conference&repository-name=conference&demo-title=Next.js%20Conference&demo-description=All-in-one%20starter%20kit%20to%20run%20your%20online%20conference&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/conference%22})
+
+## About
 
 ### Stages
 

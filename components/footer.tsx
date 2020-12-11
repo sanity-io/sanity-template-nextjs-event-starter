@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import VercelLogo from '@components/icons/icon-platform';
 import styles from './footer.module.css';
-import { SITE_NAME, SITE_URL, GUIDELINES, CODE_OF_CONDUCT, LEGAL } from '@lib/constants';
+import { SITE_NAME, SITE_URL, CODE_OF_CONDUCT, LEGAL, REPO } from '@lib/constants';
 
 export function HostedByVercel() {
   return (
@@ -26,7 +26,7 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
         </div>
         <div className={styles['footer-copyright']}>
-          Copyright © 2020{' '}
+          Copyright © {`${new Date().getFullYear()} `}
           <a
             aria-label={SITE_NAME}
             href={SITE_URL}
@@ -41,6 +41,17 @@ export default function Footer() {
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
             <a
+              href={REPO}
+              className={styles['footer-link']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source Code
+            </a>
+          </p>
+          <div className={styles['footer-separator']} />
+          <p className={styles['footer-paragraph']}>
+            <a
               href={CODE_OF_CONDUCT}
               className={styles['footer-link']}
               target="_blank"
@@ -49,28 +60,21 @@ export default function Footer() {
               Code of Conduct
             </a>
           </p>
-          <div className={styles['footer-separator']} />
-          <p className={styles['footer-paragraph']}>
-            <a
-              href={LEGAL}
-              className={styles['footer-link']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Legal
-            </a>
-          </p>
-          <div className={styles['footer-separator']} />
-          <p className={styles['footer-paragraph']}>
-            <a
-              href={GUIDELINES}
-              className={styles['footer-link']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              FAQ
-            </a>
-          </p>
+          {LEGAL && (
+            <>
+              <div className={styles['footer-separator']} />
+              <p className={styles['footer-paragraph']}>
+                <a
+                  href={LEGAL}
+                  className={styles['footer-link']}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Legal
+                </a>
+              </p>
+            </>
+          )}
         </div>
       </div>
     </footer>
