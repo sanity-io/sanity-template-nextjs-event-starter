@@ -1,5 +1,5 @@
 export async function register(email: string) {
-  return await fetch(`${process.env.API_URL || ''}/api/register`, {
+  return await fetch('/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -66,7 +66,7 @@ export type Job = {
 };
 
 export type ConfUser = {
-  id: string;
+  id?: string;
   email: string;
   ticketNumber: number;
   name?: string;
