@@ -5,7 +5,7 @@ import TalkCard from './talk-card';
 
 function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block
-  const timeBlocks = stage.schedule.reduce((allBlocks: any, talk) => {
+  const timeBlocks = stage.scheduleCollection.items.reduce((allBlocks: any, talk) => {
     allBlocks[talk.start] = [...(allBlocks[talk.start] || []), talk];
     return allBlocks;
   }, {});

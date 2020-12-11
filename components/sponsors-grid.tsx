@@ -6,7 +6,7 @@ import styles from './sponsors-grid.module.css';
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <Link key={sponsor.name} href={`/expo/${sponsor.slug}`}>
+    <Link href={`/expo/${sponsor.slug}`}>
       <a
         role="button"
         tabIndex={0}
@@ -53,12 +53,12 @@ export default function SponsorsGrid({ sponsors }: Props) {
     <>
       <div className={styles.grid}>
         {otherSponsors.map(sponsor => (
-          <SponsorCard key={sponsor.name} sponsor={sponsor} />
+          <SponsorCard key={sponsor.sys.id} sponsor={sponsor} />
         ))}
       </div>
       <div className={styles.grid}>
         {silverSponsors.map(sponsor => (
-          <SponsorCard key={sponsor.name} sponsor={sponsor} />
+          <SponsorCard key={sponsor.sys.id} sponsor={sponsor} />
         ))}
       </div>
     </>

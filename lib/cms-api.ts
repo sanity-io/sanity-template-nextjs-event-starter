@@ -1,7 +1,7 @@
-const API_URL = 'https://graphql.datocms.com/';
-const API_TOKEN = process.env.DATOCMS_API_TOKEN;
+const API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
+const API_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 
-async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
+async function fetchCmsAPI(query: string) {
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -9,8 +9,7 @@ async function fetchCmsAPI(query: string, { variables }: { variables?: Record<st
       Authorization: `Bearer ${API_TOKEN}`
     },
     body: JSON.stringify({
-      query,
-      variables
+      query
     })
   });
 
@@ -27,48 +26,62 @@ async function fetchCmsAPI(query: string, { variables }: { variables?: Record<st
 export async function getAllSpeakers() {
   const data = await fetchCmsAPI(`
     {
-      allSpeakers(first: 100) {
-        name
-        bio
-        title
-        slug
-        twitter
-        github
-        company
-        talk {
+      speakerCollection {
+        items {
+          name
+          bio
           title
-          description
-        }
-        image {
-          url(imgixParams: {fm: jpg, fit: crop, w: 300, h: 400})
-        }
-        imageSquare: image {
-          url(imgixParams: {fm: jpg, fit: crop, w: 192, h: 192})
+          slug
+          twitter
+          github
+          company
+          talk {
+            ... on Talk {
+              title
+              description
+            }
+          }
+          image {
+            url
+          }
+          imageSquare: image {
+            url
+          }
         }
       }
     }
   `);
 
-  return data.allSpeakers;
+  return data.speakerCollection.items;
 }
 
 export async function getAllStages() {
   const data = await fetchCmsAPI(`
     {
-      allStages(first: 100, orderBy: order_ASC) {
-        name
-        slug
-        stream
-        discord
-        schedule {
-          title
-          start
-          end
-          speaker {
+      stageCollection {
+        items {
             name
             slug
-            image {
-              url(imgixParams: {fm: jpg, fit: crop, w: 120, h: 120})
+            stream
+            discord
+            scheduleCollection(limit: 0) {
+              items {
+                ... on Talk {
+                  title
+                  start
+                  end
+                  speakerCollection(limit: 5) {
+                    items {
+                      ... on Speaker {
+                      name
+                      slug
+                      image {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -76,53 +89,59 @@ export async function getAllStages() {
     }
   `);
 
-  return data.allStages;
+  return data.stageCollection.items;
 }
 
 export async function getAllSponsors() {
   const data = await fetchCmsAPI(`
     {
-      allCompanies(first: 100, orderBy: tierRank_ASC) {
-        name
-        description
-        slug
-        website
-        callToAction
-        callToActionLink
-        discord
-        youtubeSlug
-        tier
-        links {
-          url
-          text
-        }
-        cardImage {
-          url(imgixParams: {fm: jpg, fit: crop})
-        }
-        logo {
-          url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100})
+      companyCollection(order: tierRank_ASC, limit: 100) {
+        items {
+            sys {
+              id
+            }
+            name
+            description
+            slug
+            website
+            callToAction
+            callToActionLink
+            discord
+            youtubeSlug
+            tier
+            links 
+            cardImage {
+              url
+            }
+            logo {
+              url
+            }
         }
       }
     }
   `);
 
-  return data.allCompanies;
+  return data.companyCollection.items;
 }
 
 export async function getAllJobs() {
   const data = await fetchCmsAPI(`
     {
-      allJobs(first: 100, orderBy: rank_ASC) {
-        id
-        companyName
-        title
-        description
-        discord
-        link
-        rank
+      jobCollection(order: rank_ASC, limit: 100) {
+        items {
+            sys {
+              id
+            }
+            companyName
+            title
+            description
+            discord
+            link
+            rank
+        }
       }
     }
   `);
 
-  return data.allJobs;
+  return data.jobCollection.items;
 }

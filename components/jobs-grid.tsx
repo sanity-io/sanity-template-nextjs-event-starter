@@ -10,7 +10,7 @@ function CompanyJobs({ jobs }: Props) {
     <div className={styles.grid}>
       {jobs.map(job => (
         <a
-          key={job.id}
+          key={job.sys.id}
           className={styles.card}
           href={job.link}
           target="_blank"
