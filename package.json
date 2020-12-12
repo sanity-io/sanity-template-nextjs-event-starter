@@ -1,9 +1,9 @@
 {
-  "name": "next-conference",
-  "description": "Starter kit for an online conference.",
+  "name": "online-event-starter-kit",
+  "description": "Starter kit for an online event.",
   "version": "1.0.0",
-  "repository": "vercel/conference",
-  "author": "Vercel",
+  "repository": "vercel/online-event-starter-kit",
+  "author": "Vercel Inc.",
   "homepage": "https://conference.vercel.app",
   "license": "Apache-2.0",
   "engines": {
