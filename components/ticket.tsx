@@ -11,7 +11,7 @@ import TicketForm from './ticket-form';
 import TicketVisual from './ticket-visual';
 import TicketActions from './ticket-actions';
 import TicketCopy from './ticket-copy';
-import { DATE } from '@lib/constants';
+import { DATE, SITE_NAME } from '@lib/constants';
 import Form from './form';
 
 type Props = {
@@ -55,7 +55,11 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
         <div className={styles['ticket-text']}>
           <h2 className={cn(styles.hero, styleUtils.appear, styleUtils['appear-first'])}>
             {sharePage ? (
-              <>{name}’s Ticket</>
+              name ? (
+                <>{name}’s Ticket</>
+              ) : (
+                <>{SITE_NAME}</>
+              )
             ) : (
               <>
                 You're in. <br /> Make it unique.
@@ -64,7 +68,9 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
           </h2>
           <p className={cn(styles.description, styleUtils.appear, styleUtils['appear-second'])}>
             {sharePage ? (
-              <>Join them on {DATE}.</>
+              <>
+                Join {name && 'them '} on {DATE}.
+              </>
             ) : (
               <>
                 Generate a unique ticket image with <br className={styleUtils['hide-on-mobile']} />
