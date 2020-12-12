@@ -1,12 +1,12 @@
 import cn from 'classnames';
 import VercelLogo from '@components/icons/icon-platform';
 import styles from './footer.module.css';
-import { SITE_NAME, SITE_URL, CODE_OF_CONDUCT, LEGAL, REPO } from '@lib/constants';
+import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, REPO } from '@lib/constants';
 
 export function HostedByVercel() {
   return (
     <a
-      href={SITE_URL}
+      href="https://vercel.com"
       className={cn(styles['footer-link'], styles['footer-logo'])}
       target="_blank"
       rel="noopener noreferrer"
@@ -26,17 +26,8 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
         </div>
         <div className={styles['footer-copyright']}>
-          Copyright © {`${new Date().getFullYear()} `}
-          <a
-            aria-label={SITE_NAME}
-            href={SITE_URL}
-            className={cn(styles['footer-link'], styles['footer-logo'])}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {SITE_NAME}
-          </a>
-          . All rights reserved.
+          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
+          rights reserved.
         </div>
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
@@ -60,12 +51,12 @@ export default function Footer() {
               Code of Conduct
             </a>
           </p>
-          {LEGAL && (
+          {LEGAL_URL && (
             <>
               <div className={styles['footer-separator']} />
               <p className={styles['footer-paragraph']}>
                 <a
-                  href={LEGAL}
+                  href={LEGAL_URL}
                   className={styles['footer-link']}
                   target="_blank"
                   rel="noopener noreferrer"
