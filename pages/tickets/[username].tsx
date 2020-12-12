@@ -2,10 +2,11 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Error from 'next/error';
 import Head from 'next/head';
 import { SkipNavContent } from '@reach/skip-nav';
+import redis from '@lib/redis';
 
 import Page from '@components/page';
 import ConfContent from '@components/index';
-import { SITE_URL, TICKET_IMAGE_URL, SITE_NAME } from '@lib/constants';
+import { SITE_URL, TICKET_IMAGE_URL, SITE_NAME, SITE_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   username: string | null;
@@ -20,7 +21,7 @@ export default function TicketShare({ username, ticketNumber, name }: Props) {
 
   const meta = {
     title: `${name}’s ${SITE_NAME} Ticket`,
-    description: `Join ${name} at ${SITE_NAME}. An interactive online experience by the community, free for everyone.`,
+    description: `Join ${name} at ${SITE_NAME}. ${SITE_DESCRIPTION}.`,
     image: username
       ? `${TICKET_IMAGE_URL}/Nextjs-Conf-Ticket.png?username=${username}`
       : '/twitter-card.png',
@@ -49,26 +50,19 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const username = params?.username?.toString() || null;
 
   if (username) {
-    const res = await fetch(`${process.env.API_URL || ''}/api/user`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: params?.username?.toString()
-      })
-    });
+    if (redis) {
+      const [name, ticketNumber] = await redis.hmget(`user:${username}`, 'name', 'ticketNumber');
 
-    if (res.ok) {
-      const { name, ticketNumber } = await res.json();
-      return {
-        props: {
-          username: username || null,
-          name: name || username || null,
-          ticketNumber: ticketNumber || null
-        },
-        revalidate: 5
-      };
+      if (ticketNumber) {
+        return {
+          props: {
+            username: username || null,
+            name: name || username || null,
+            ticketNumber: parseInt(ticketNumber, 10) || null
+          },
+          revalidate: 5
+        };
+      }
     }
   }
 
