@@ -1,10 +1,9 @@
 import cn from 'classnames';
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
-import { BRAND_NAME, DATE } from '@lib/constants';
+import { BRAND_NAME, DATE, SITE_DESCRIPTION } from '@lib/constants';
 
 export default function Hero() {
-  const description = <>An interactive online experience by the community, free for everyone.</>;
   return (
     <div className={styles.wrapper}>
       <h2
@@ -15,7 +14,7 @@ export default function Hero() {
           styles.description
         )}
       >
-        {description}
+        {SITE_DESCRIPTION}
       </h2>
       <h1 className={cn(styleUtils.appear, styleUtils['appear-third'], styles.hero)}>
         The first {BRAND_NAME}
@@ -29,7 +28,7 @@ export default function Hero() {
           styles.description
         )}
       >
-        {description}
+        {SITE_DESCRIPTION}
       </h2>
       <div className={cn(styleUtils.appear, styleUtils['appear-fourth'], styles.info)}>
         <p>{DATE}</p>
