@@ -1,7 +1,7 @@
 {
   "name": "online-event-starter-kit",
   "description": "Starter kit for an online event.",
-  "version": "1.0.0",
+  "private": true,
   "repository": "vercel/online-event-starter-kit",
   "author": "Vercel Inc.",
   "homepage": "https://conference.vercel.app",
