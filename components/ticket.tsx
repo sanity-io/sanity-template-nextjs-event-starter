@@ -11,6 +11,7 @@ import TicketForm from './ticket-form';
 import TicketVisual from './ticket-visual';
 import TicketActions from './ticket-actions';
 import TicketCopy from './ticket-copy';
+import { DATE } from '@lib/constants';
 import Form from './form';
 
 type Props = {
@@ -63,7 +64,7 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
           </h2>
           <p className={cn(styles.description, styleUtils.appear, styleUtils['appear-second'])}>
             {sharePage ? (
-              <>Join them on October 27, 2020.</>
+              <>Join them on {DATE}.</>
             ) : (
               <>
                 Generate a unique ticket image with <br className={styleUtils['hide-on-mobile']} />
