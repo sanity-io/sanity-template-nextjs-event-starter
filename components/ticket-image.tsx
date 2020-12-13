@@ -10,8 +10,9 @@ export default function TicketImage() {
       <div className={styles.background}>
         <div className={styles.page}>
           <Head>
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link
-              href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@700&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&family=Noto+Sans+SC:wght@700&family=Noto+Sans+TC:wght@700&family=Noto+Sans:wght@700&display=swap"
+              href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&Noto+Sans+HK:wght@700&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&family=Noto+Sans+SC:wght@700&family=Noto+Sans+TC:wght@700&family=Noto+Sans:wght@700&display=swap"
               rel="stylesheet"
             />
           </Head>
