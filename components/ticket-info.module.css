@@ -2,7 +2,8 @@
   .info {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: var(--space-4x);
+    gap: calc(var(--space-4x) * var(--size));
+    font-size: calc(1em * var(--size));
   }
 }
 
@@ -14,13 +15,13 @@
 @media (min-width: 768px) {
   .logo {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: calc(16px * var(--size));
   }
 }
 
 .date {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: calc(20px * var(--size));
   line-height: 1.15;
   margin-bottom: var(--space-4x);
 }
@@ -46,6 +47,11 @@
 .created-by-text {
   white-space: nowrap;
   margin-right: var(--space);
+}
+
+.created-by-logo {
+  height: calc(16px * var(--size));
+  display: inline-flex;
 }
 
 .url {

@@ -40,15 +40,15 @@
 .info {
   z-index: 1;
   position: absolute;
-  top: 120px;
+  top: calc(120px * var(--size));
   width: 100%;
   height: 100%;
-  padding: 46px 29px;
+  padding: calc(46px * var(--size)) calc(29px * var(--size));
 }
 
 @media (min-width: 768px) {
   .info {
-    top: 140px;
+    top: calc(140px * var(--size));
     padding: calc(44px * var(--size)) calc(160px * var(--size)) calc(44px * var(--size))
       calc(63px * var(--size));
   }

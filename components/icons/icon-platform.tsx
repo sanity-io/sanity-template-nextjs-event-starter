@@ -1,4 +1,4 @@
-type Props = { color: string; height?: number };
+type Props = { color: string; height?: number | string };
 
 export default function PlatformLogo({ color, height = 20 }: Props) {
   return (
