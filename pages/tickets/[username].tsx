@@ -30,7 +30,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     : {
         title: 'Ticket',
         description: SITE_DESCRIPTION,
-        image: '/twitter-card.png',
+        image: `/api/ticket-images/${usernameFromParams}`,
         url: `${SITE_URL}/tickets/${usernameFromParams}`
       };
 
