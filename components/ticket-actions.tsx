@@ -20,7 +20,7 @@ export default function TicketActions({ username }: Props) {
   const text = encodeURIComponent(TWEET_TEXT);
   const tweetUrl = `https://twitter.com/intent/tweet?url=${permalink}&via=vercel&text=${text}`;
   const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${permalink}`;
-  const downloadUrl = `/download-ticket/${username}`;
+  const downloadUrl = `/api/ticket-images/${username}`;
 
   useEffect(() => {
     setImgReady(false);
@@ -76,7 +76,7 @@ export default function TicketActions({ username }: Props) {
           // Wait for the image download to finish
           setLoading(true);
         }}
-        download="Nextjs-Conf-Ticket.png"
+        download="ticket.png"
       >
         {loading ? (
           <LoadingDots size={4} />

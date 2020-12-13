@@ -6,13 +6,7 @@ import redis from '@lib/redis';
 
 import Page from '@components/page';
 import ConfContent from '@components/index';
-import {
-  SITE_URL,
-  TICKET_IMAGE_URL,
-  SITE_NAME,
-  SITE_DESCRIPTION,
-  SAMPLE_TICKET_NUMBER
-} from '@lib/constants';
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, SAMPLE_TICKET_NUMBER } from '@lib/constants';
 
 type Props = {
   username: string | null;
@@ -30,7 +24,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     ? {
         title: `${name}’s ${SITE_NAME} Ticket`,
         description: `Join ${name} at ${SITE_NAME}. ${SITE_DESCRIPTION}.`,
-        image: `${TICKET_IMAGE_URL}/Nextjs-Conf-Ticket.png?username=${username}`,
+        image: `/api/ticket-images/${username}`,
         url: `${SITE_URL}/tickets/${username}`
       }
     : {

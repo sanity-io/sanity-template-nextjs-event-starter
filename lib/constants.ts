@@ -4,7 +4,6 @@ export const TWITTER_USER_NAME = 'vercel';
 export const BRAND_NAME = 'ACME';
 export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
 export const SITE_NAME = 'ACME Conf';
-export const TICKET_IMAGE_URL = 'TODO';
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const EMAIL = 'contact@example.com';
