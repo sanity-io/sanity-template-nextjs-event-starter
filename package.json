@@ -1,8 +1,8 @@
 {
-  "name": "online-event-starter-kit",
-  "description": "Starter kit for an online event.",
+  "name": "virtual-event-starter-kit",
+  "description": "Starter kit for your virtual event.",
   "private": true,
-  "repository": "vercel/online-event-starter-kit",
+  "repository": "vercel/virtual-event-starter-kit",
   "author": "Vercel Inc.",
   "homepage": "https://demo.vercel.events",
   "license": "Apache-2.0",

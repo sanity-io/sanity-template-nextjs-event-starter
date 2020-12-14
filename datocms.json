@@ -1,6 +1,6 @@
 {
-  "name": "Online Event Starter Kit",
-  "description": "Fully customizable starter kit for your online event.",
+  "name": "Virtual Event Starter Kit",
+  "description": "Fully customizable starter kit for your virtual event.",
   "previewImage": "TODO",
   "datocmsProjectId": "37685",
   "deploymentType": "vercel",

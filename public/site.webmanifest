@@ -1,7 +1,7 @@
 {
-  "name": "Online Event Starter Kit",
-  "short_name": "Online Event Starter Kit",
-  "description": "Online Event Starter Kit -> https://demo.vercel.events",
+  "name": "Virtual Event Starter Kit",
+  "short_name": "Virtual Event Starter Kit",
+  "description": "Virtual Event Starter Kit -> https://demo.vercel.events",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",
