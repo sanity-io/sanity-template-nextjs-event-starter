@@ -1,3 +1,5 @@
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
+
 # Online Event Starter Kit
 
 This online event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees. It includes the following features:
@@ -47,10 +49,59 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy Your Own
 
-1. First, create a [GitHub OAuth application](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app) to use for authentication.
-2. Then, provide the OAuth Client ID and secret during the Vercel import flow.
+We've included a read-only DatoCMS access token so you can clone and deploy without setting up your own CMS. However, there are a few steps you'll need to complete before launching your event.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/conference/tree/main/&project-name=next-conference&repository-name=conference&demo-title=Next.js%20Conference&demo-description=All-in-one%20starter%20kit%20to%20run%20your%20online%20conference&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/conference%22})
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
+
+You'll need to customize this starter kit to your needs. There are three pieces you'll want to choose:
+
+- Authentication (defaults to [GitHub OAuth](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app))
+- Database (defaults to [Redis](https://redis.io/))
+- CMS (defaults to [DatoCMS](https://www.datocms.com/))
+
+We've included the defaults used for Next.js Conf. However, you are free to switch these as you see fit.
+
+### Authentication
+
+1. Create a [GitHub OAuth application](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app) to use for authentication.
+2. Add the OAuth Client ID to your [environment variables inside Vercel](https://vercel.com/docs/environment-variables). To verify locally, copy the example environment variables.
+
+```bash
+cp .env.local.example .env.local
+```
+
+3. Populate `NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` with the values from your GitHub OAuth application.
+
+If you’d like to test GitHub OAuth locally, update `SITE_ORIGIN` inside `.env.local` to be `http://localhost:3000`.
+
+### Database
+
+1. Install Redis using homebrew and launch it: `redis-server /usr/local/etc/redis.conf`
+2. Specify the following in `.env.local`
+
+```
+REDIS_PORT=6379
+REDIS_URL=localhost
+REDIS_PASSWORD=bar
+REDIS_EMAIL_TO_ID_SECRET=foo
+```
+
+3. In a separate terminal window, start the dev server and try registering for the event.
+4. In a separate terminal window, run `redis-cli` and inspect:
+
+```
+keys *
+hgetall "id:<enter id>"
+```
+
+You should see the newly registered user.
+
+### CMS
+
+The default example uses DatoCMS. We also have examples for:
+
+- [AgilityCMS]()
+- [Contentful]()
 
 ## About
 

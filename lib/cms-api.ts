@@ -15,7 +15,7 @@
  */
 
 const API_URL = 'https://graphql.datocms.com/';
-const API_TOKEN = process.env.DATOCMS_API_TOKEN;
+const API_TOKEN = process.env.DATOCMS_READ_ONLY_API_TOKEN;
 
 async function fetchCmsAPI(query: string, { variables }: { variables?: Record<string, any> } = {}) {
   const res = await fetch(API_URL, {
