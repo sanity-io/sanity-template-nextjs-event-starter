@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://conference.vercel.app';
+export const SITE_URL = 'https://demo.vercel.events';
 export const SITE_ORIGIN = process.env.SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'vercel';
 export const BRAND_NAME = 'ACME';

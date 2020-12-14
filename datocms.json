@@ -6,5 +6,5 @@
   "deploymentType": "vercel",
   "buildCommand": "npm run build",
   "datocmsApiTokenEnvName": "DATOCMS_READ_ONLY_API_TOKEN",
-  "livePreviewUrl": "https://conference.vercel.app/"
+  "livePreviewUrl": "https://demo.vercel.events/"
 }

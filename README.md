@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://demo.vercel.events&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
 
 # Online Event Starter Kit
 
@@ -51,7 +51,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 We've included a read-only DatoCMS access token so you can clone and deploy without setting up your own CMS. However, there are a few steps you'll need to complete before launching your event.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://conference.vercel.app&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/online-event-starter-kit/tree/main/&project-name=online-event-starter-kit&repository-name=online-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://demo.vercel.events&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/online-event-starter-kit%22})
 
 You'll need to customize this starter kit to your needs. There are three pieces you'll want to choose:
 
@@ -115,7 +115,7 @@ The primary use case for this is updating the YouTube embedded URL. Next.js Conf
 
 ### Schedule / Speaker Pages
 
-Schedule and speaker information is hosted in DatoCMS. The demo (`conference.vercel.app`) is seeded with images from Unsplash and a placeholder schedule. Each speaker has their own page with an image, bio, social media links, and information about their talk. The schedule is also shown as a sidebar on each corresponding stage.
+Schedule and speaker information is hosted in DatoCMS. The demo (`demo.vercel.events`) is seeded with images from Unsplash and a placeholder schedule. Each speaker has their own page with an image, bio, social media links, and information about their talk. The schedule is also shown as a sidebar on each corresponding stage.
 
 ### Sponsor Expo
 
