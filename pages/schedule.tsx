@@ -23,7 +23,7 @@ import Header from '@components/header';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
-import { FULL_DATE } from '@lib/constants';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   allStages: Stage[];
@@ -31,14 +31,14 @@ type Props = {
 
 export default function SchedulePage({ allStages }: Props) {
   const meta = {
-    title: 'Schedule',
-    description: `Keynote begins ${FULL_DATE}. Local times shown below.`
+    title: 'Schedule - Online Event Starter Kit',
+    description: META_DESCRIPTION
   };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero={meta.title} description={meta.description} />
+        <Header hero="Schedule" description={meta.description} />
         <Schedule allStages={allStages} />
       </Layout>
     </Page>

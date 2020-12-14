@@ -23,6 +23,7 @@ import Header from '@components/header';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   speakers: Speaker[];
@@ -30,13 +31,13 @@ type Props = {
 
 export default function Speakers({ speakers }: Props) {
   const meta = {
-    title: 'Speakers',
-    description: 'Learn more about our amazing conference speakers.'
+    title: 'Speakers - Online Event Starter Kit',
+    description: META_DESCRIPTION
   };
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero={meta.title} description={meta.description} />
+        <Header hero="Speakers" description={meta.description} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>

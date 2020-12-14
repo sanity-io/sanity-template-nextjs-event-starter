@@ -22,7 +22,7 @@ import Layout from '@components/layout';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
-import { SITE_NAME } from '@lib/constants';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   stage: Stage;
@@ -31,8 +31,8 @@ type Props = {
 
 export default function StagePage({ stage, allStages }: Props) {
   const meta = {
-    title: stage.name,
-    description: `Watch talks from ${SITE_NAME} live on ${stage.name}.`
+    title: 'Demo - Online Event Starter Kit',
+    description: META_DESCRIPTION
   };
 
   return (

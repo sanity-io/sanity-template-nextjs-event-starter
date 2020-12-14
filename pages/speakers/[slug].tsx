@@ -22,13 +22,17 @@ import Layout from '@components/layout';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   speaker: Speaker;
 };
 
 export default function SpeakerPage({ speaker }: Props) {
-  const meta = { title: speaker.name, description: speaker.bio };
+  const meta = {
+    title: 'Demo - Online Event Starter Kit',
+    description: META_DESCRIPTION
+  };
 
   return (
     <Page meta={meta}>

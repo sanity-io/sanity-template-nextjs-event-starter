@@ -19,10 +19,14 @@ import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '@components/page';
 import ConfContent from '@components/index';
+import { META_DESCRIPTION } from '@lib/constants';
 
 export default function Conf() {
   const { query } = useRouter();
-  const meta = {title: "Register", description: "Register for the event." }
+  const meta = {
+    title: 'Demo - Online Event Starter Kit',
+    description: META_DESCRIPTION
+  };
   const ticketNumber = query.ticketNumber?.toString();
   const defaultUserData = {
     id: query.id?.toString(),

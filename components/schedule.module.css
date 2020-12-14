@@ -19,6 +19,10 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 .row-wrapper {
   display: inline-block;
 }

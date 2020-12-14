@@ -23,6 +23,7 @@ import Header from '@components/header';
 
 import { getAllJobs } from '@lib/cms-api';
 import { Job } from '@lib/types';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   jobs: Job[];
@@ -30,14 +31,14 @@ type Props = {
 
 export default function Jobs({ jobs }: Props) {
   const meta = {
-    title: 'Career Fair',
-    description: 'Find the best jobs from companies using our product.'
+    title: 'Career Fair - Online Event Starter Kit',
+    description: META_DESCRIPTION
   };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero={meta.title} description={meta.description} />
+        <Header hero="Career Fair" description={meta.description} />
         <JobsGrid jobs={jobs} />
       </Layout>
     </Page>

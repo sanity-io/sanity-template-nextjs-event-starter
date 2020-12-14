@@ -22,13 +22,17 @@ import Layout from '@components/layout';
 
 import { getAllSponsors } from '@lib/cms-api';
 import { Sponsor } from '@lib/types';
+import { META_DESCRIPTION } from '@lib/constants';
 
 type Props = {
   sponsor: Sponsor;
 };
 
 export default function SponsorPage({ sponsor }: Props) {
-  const meta = { title: sponsor.name, description: sponsor.description };
+  const meta = {
+    title: 'Demo - Online Event Starter Kit',
+    description: META_DESCRIPTION
+  };
 
   return (
     <Page meta={meta}>
