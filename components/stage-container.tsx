@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import cn from 'classnames';
 import { Stage } from '@lib/types';
-import useConfUser from '@lib/hooks/use-conf-user';
+import useLoginStatus from '@lib/hooks/use-login-status';
 import styles from './stage-container.module.css';
 import styleUtils from './utils.module.css';
 import ScheduleSidebar from './schedule-sidebar';
@@ -20,12 +20,12 @@ export default function StageContainer({ stage, allStages }: Props) {
 
   const updatedStages = response.data || [];
   const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
-  const { confUser } = useConfUser();
+  const { loggedIn } = useLoginStatus();
 
   return (
     <div className={styles.container}>
       <div className={styles.streamContainer}>
-        {confUser ? (
+        {loggedIn ? (
           <div className={cn(styles.stream, styleUtils.appear, styleUtils['appear-first'])}>
             <iframe
               allow="autoplay; picture-in-picture"
@@ -64,7 +64,7 @@ export default function StageContainer({ stage, allStages }: Props) {
               </a>
             </div>
           </div>
-        ) : typeof confUser === 'undefined' ? null : (
+        ) : (
           <ConfEntry />
         )}
       </div>

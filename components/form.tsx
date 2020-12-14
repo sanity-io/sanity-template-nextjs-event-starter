@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import cn from 'classnames';
 import useConfData from '@lib/hooks/use-conf-data';
-import useConfUser from '@lib/hooks/use-conf-user';
 import { useRouter } from 'next/router';
 import FormError from '@lib/form-error';
 import LoadingDots from './loading-dots';
@@ -9,6 +8,7 @@ import styleUtils from './utils.module.css';
 import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import { register } from '@lib/user-api';
+import useLoginStatus from '@lib/hooks/use-login-status';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -24,7 +24,7 @@ export default function Form({ sharePage }: Props) {
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
-  const { updateConfUser } = useConfUser();
+  const { mutate } = useLoginStatus();
   useEmailQueryParam('email', setEmail);
 
   return formState === 'error' ? (
@@ -89,7 +89,7 @@ export default function Form({ sharePage }: Props) {
                 setPageState('ticket');
               }
 
-              updateConfUser(email);
+              mutate();
             })
             .catch(async err => {
               let message = 'Error! Please try again.';

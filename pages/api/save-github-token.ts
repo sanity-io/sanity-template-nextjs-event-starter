@@ -28,12 +28,12 @@ export default async function saveGithubToken(req: NextApiRequest, res: NextApiR
 
   const ticketNumber = await redis.hget(`id:${body.id}`, 'ticketNumber');
   if (!ticketNumber) {
-    return res.status(404).json({ error: 'The registration does not exist' });
+    return res.status(404).json({ code: 'invalid_id', message: 'The registration does not exist' });
   }
 
   const [username, name] = await redis.hmget(`github-user:${body.token}`, 'login', 'name');
   if (!username) {
-    return res.status(400).json({ error: 'Invalid or expired token' });
+    return res.status(400).json({ code: 'invalid_token', message: 'Invalid or expired token' });
   }
 
   const key = `id:${body.id}`;

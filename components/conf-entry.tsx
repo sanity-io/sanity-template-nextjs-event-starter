@@ -1,10 +1,10 @@
 import cn from 'classnames';
 import { useCallback, useState } from 'react';
-import useConfUser from '@lib/hooks/use-conf-user';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
 import { register } from '@lib/user-api';
+import useLoginStatus from '@lib/hooks/use-login-status';
 import { SITE_DESCRIPTION } from '@lib/constants';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 
@@ -26,7 +26,7 @@ export default function ConfEntry() {
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
-  const { updateConfUser } = useConfUser();
+  const { mutate } = useLoginStatus();
 
   const onSubmit = useCallback(
     async e => {
@@ -43,14 +43,14 @@ export default function ConfEntry() {
           return;
         }
 
-        await updateConfUser(emailInput);
+        mutate();
       } catch (err) {
         console.error(err);
         setErrorMsg(DEFAULT_ERROR_MSG);
         setFormState('error');
       }
     },
-    [emailInput, updateConfUser]
+    [emailInput, mutate]
   );
 
   useEmailQueryParam('login', setEmailInput);

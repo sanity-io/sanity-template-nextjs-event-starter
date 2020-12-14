@@ -1,18 +1,30 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { ConfUser } from '@lib/types';
+import { COOKIE } from '@lib/constants';
+import redis from '@lib/redis';
 
-export default async function user(req: NextApiRequest, res: NextApiResponse) {
-  const { email, username } = req.body;
+export default async function auth(req: NextApiRequest, res: NextApiResponse) {
+  const id = req.cookies[COOKIE];
+  if (!id) {
+    return res.status(400).json({
+      error: {
+        code: 'missing_cookie',
+        message: 'Missing cookie'
+      }
+    });
+  }
 
-  /* Fetch the user to your DB with either email or username */
-  const user: ConfUser = {
-    id: 'V1StGXR8_Z5jdHi6B-myT',
-    email: 'user@example.com',
-    ticketNumber: 1234,
-    name: 'User Name',
-    username: 'username',
-    createdAt: 1607532293
-  };
+  if (redis) {
+    const ticketNumberString = await redis.hget(`id:${id}`, 'ticketNumber');
 
-  return res.status(200).json(user);
+    if (!ticketNumberString) {
+      return res.status(401).json({
+        error: {
+          code: 'not_registered',
+          message: 'This user is not registered'
+        }
+      });
+    }
+  }
+
+  return res.status(200).json({ loggedIn: true });
 }

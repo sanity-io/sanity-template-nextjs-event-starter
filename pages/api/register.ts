@@ -1,7 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { nanoid } from 'nanoid';
 import { ConfUser } from '@lib/types';
 import validator from 'validator';
-import { SAMPLE_TICKET_NUMBER } from '@lib/constants';
+import { SAMPLE_TICKET_NUMBER, COOKIE } from '@lib/constants';
+import cookie from 'cookie';
+import ms from 'ms';
 import redis, { emailToId } from '@lib/redis';
 
 type ErrorResponse = {
@@ -34,7 +37,7 @@ export default async function register(
     });
   }
 
-  let id: string | undefined = undefined;
+  let id;
   let ticketNumber: number;
   let createdAt: number;
   let statusCode: number;
@@ -66,10 +69,23 @@ export default async function register(
       statusCode = 201;
     }
   } else {
+    id = nanoid();
     ticketNumber = SAMPLE_TICKET_NUMBER;
     createdAt = Date.now();
     statusCode = 200;
   }
+
+  // Save `key` in a httpOnly cookie
+  res.setHeader(
+    'Set-Cookie',
+    cookie.serialize(COOKIE, id, {
+      httpOnly: true,
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/api',
+      expires: new Date(Date.now() + ms('7 days'))
+    })
+  );
 
   return res.status(statusCode).json({
     id,

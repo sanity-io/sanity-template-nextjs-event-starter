@@ -12,6 +12,7 @@ export const SHORT_DATE = 'Oct 27 - 9:00am PST';
 export const FULL_DATE = 'Oct 27th 9am Pacific Time (GMT-7)';
 export const TWEET_TEXT =
   'Just got my free ticket to #acmeconf, grab yours! Let’s build a better web with Acme.';
+export const COOKIE = 'user-id';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
 // strings containing your own privacy policy URL and copyright holder name
@@ -21,7 +22,6 @@ export const COPYRIGHT_HOLDER = process.env.NEXT_PUBLIC_COPYRIGHT_HOLDER;
 export const CODE_OF_CONDUCT =
   'https://www.notion.so/vercel/Code-of-Conduct-Example-7ddd8d0e9c354bb597a0faed87310a78';
 export const REPO = 'https://github.com/vercel/online-event-starter-kit';
-export const COOKIE_NAME = 'conf-email';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
