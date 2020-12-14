@@ -20,12 +20,12 @@ export default function StageContainer({ stage, allStages }: Props) {
 
   const updatedStages = response.data || [];
   const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
-  const { loggedIn } = useLoginStatus();
+  const { loginStatus } = useLoginStatus();
 
   return (
     <div className={styles.container}>
       <div className={styles.streamContainer}>
-        {loggedIn ? (
+        {loginStatus === 'loggedIn' ? (
           <div className={cn(styles.stream, styleUtils.appear, styleUtils['appear-first'])}>
             <iframe
               allow="autoplay; picture-in-picture"
@@ -64,7 +64,7 @@ export default function StageContainer({ stage, allStages }: Props) {
               </a>
             </div>
           </div>
-        ) : (
+        ) : loginStatus === 'loading' ? null : (
           <ConfEntry />
         )}
       </div>
