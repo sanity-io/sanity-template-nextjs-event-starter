@@ -1,4 +1,4 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/virtual-event-starter-kit/tree/main/&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://demo.vercel.events&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvirtual-event-starter-kit&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Virtual%20Event%20Starter%20Kit&demo-description=Jumpstart%20your%20virtual%20event%20and%20scale%20to%20any%20size%20with%20Next.js%20and%20Vercel.&demo-url=https%3A%2F%2Fdemo.vercel.events%2F&demo-image=https%3A%2F%2Fdemo.vercel.events%2Fdeploy.png&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
 
 # Virtual Event Starter Kit
 
@@ -51,7 +51,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 We've included a read-only DatoCMS access token so you can clone and deploy without setting up your own CMS. However, there are a few steps you'll need to complete before launching your event.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/virtual-event-starter-kit/tree/main/&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Online%20Event%20Starter%20Kit&demo-description=Starter%20kit%20to%20run%20your%20online%event&demo-url=https://demo.vercel.events&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvirtual-event-starter-kit&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Virtual%20Event%20Starter%20Kit&demo-description=Jumpstart%20your%20virtual%20event%20and%20scale%20to%20any%20size%20with%20Next.js%20and%20Vercel.&demo-url=https%3A%2F%2Fdemo.vercel.events%2F&demo-image=https%3A%2F%2Fdemo.vercel.events%2Fdeploy.png&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
 
 You'll need to customize this starter kit to your needs. There are three pieces you'll want to choose:
 
