@@ -164,10 +164,6 @@
   fill: #fff;
 }
 
-.submit.default.generate-with-github.not-allowed:disabled {
-  cursor: not-allowed;
-}
-
 @media (min-width: 1200px) {
   .form-row {
     margin: 0;
