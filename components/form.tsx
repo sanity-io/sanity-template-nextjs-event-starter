@@ -97,7 +97,7 @@ export default function Form({ sharePage }: Props) {
                       )}`
                   )
                   .join('&');
-                router.replace(`/conf?${queryString}`, '/conf');
+                router.replace(`/?${queryString}`, '/');
               } else {
                 setUserData(params);
                 setPageState('ticket');
