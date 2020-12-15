@@ -36,7 +36,7 @@ export default function StageContainer({ stage, allStages }: Props) {
 
   const updatedStages = response.data || [];
   const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
-  const { loginStatus } = useLoginStatus();
+  const { loginStatus, mutate } = useLoginStatus();
 
   return (
     <div className={styles.container}>
@@ -81,7 +81,7 @@ export default function StageContainer({ stage, allStages }: Props) {
             </div>
           </div>
         ) : loginStatus === 'loading' ? null : (
-          <ConfEntry />
+          <ConfEntry onRegister={() => mutate()} />
         )}
       </div>
       <ScheduleSidebar allStages={updatedStages} />

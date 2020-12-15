@@ -24,7 +24,6 @@ import styleUtils from './utils.module.css';
 import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import { register } from '@lib/user-api';
-import useLoginStatus from '@lib/hooks/use-login-status';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -40,7 +39,6 @@ export default function Form({ sharePage }: Props) {
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
-  const { mutate } = useLoginStatus();
   useEmailQueryParam('email', setEmail);
 
   return formState === 'error' ? (
@@ -104,8 +102,6 @@ export default function Form({ sharePage }: Props) {
                 setUserData(params);
                 setPageState('ticket');
               }
-
-              mutate();
             })
             .catch(async err => {
               let message = 'Error! Please try again.';

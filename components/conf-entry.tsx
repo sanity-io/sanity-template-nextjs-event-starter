@@ -20,7 +20,6 @@ import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
 import { register } from '@lib/user-api';
-import useLoginStatus from '@lib/hooks/use-login-status';
 import { SITE_DESCRIPTION } from '@lib/constants';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 
@@ -37,12 +36,11 @@ function getErrorMsg(code: string) {
   }
 }
 
-export default function ConfEntry() {
+export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
   const [emailInput, setEmailInput] = useState('');
   const [focused, setFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
-  const { mutate } = useLoginStatus();
 
   const onSubmit = useCallback(
     async e => {
@@ -59,14 +57,14 @@ export default function ConfEntry() {
           return;
         }
 
-        mutate();
+        onRegister();
       } catch (err) {
         console.error(err);
         setErrorMsg(DEFAULT_ERROR_MSG);
         setFormState('error');
       }
     },
-    [emailInput, mutate]
+    [emailInput, onRegister]
   );
 
   useEmailQueryParam('login', setEmailInput);
