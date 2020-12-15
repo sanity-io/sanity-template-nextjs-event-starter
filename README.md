@@ -64,15 +64,20 @@ We've included the defaults used for Next.js Conf. However, you are free to swit
 ### Authentication
 
 1. Create a [GitHub OAuth application](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app) to use for authentication.
-2. Add the OAuth Client ID to your [environment variables inside Vercel](https://vercel.com/docs/environment-variables). To verify locally, copy the example environment variables.
 
-```bash
-cp .env.local.example .env.local
-```
+- Set **Authorization Callback URL** as `<your domain>/api/github-oauth`.
+- After creating the OAuth app, create a **client secret**.
 
-3. Populate `NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` with the values from your GitHub OAuth application.
+2. Set these environment variables [on Vercel](https://vercel.com/docs/environment-variables):
 
-If you’d like to test GitHub OAuth locally, update `SITE_ORIGIN` inside `.env.local` to be `http://localhost:3000`.
+- `NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID`: **Client ID** of the OAuth app.
+- `GITHUB_OAUTH_CLIENT_SECRET`: **Client secret** of the OAuth app.
+
+#### If testing locally:
+
+- Set the Authorization Callback URL as `http://localhost:3000/api/github-oauth` on GitHub.
+- Create `.env.local` and set `NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET`. You can copy `.env.local.example` or use [Vercel CLI](https://vercel.com/docs/cli#commands/env).
+- Finally, set `SITE_ORIGIN` env var as `http://localhost:3000`. This is required to get the OAuth popup to work locally.
 
 ### Database
 
