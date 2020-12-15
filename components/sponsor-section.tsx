@@ -20,6 +20,7 @@ import cn from 'classnames';
 import { Sponsor } from '@lib/types';
 import styles from './sponsor-section.module.css';
 import styleUtils from './utils.module.css';
+import { urlFor } from '@lib/cms-api';
 
 type Props = {
   sponsor: Sponsor;
@@ -61,7 +62,7 @@ export default function SponsorSection({ sponsor }: Props) {
           <div className={styles['name-and-logo']}>
             <Image
               alt={sponsor.name}
-              src={sponsor.logo.url}
+              src={urlFor(sponsor.logo).width(64).height(64).url()}
               className={styles.image}
               loading="lazy"
               title={sponsor.name}

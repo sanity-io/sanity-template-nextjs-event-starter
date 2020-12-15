@@ -21,6 +21,7 @@ import { useState, useEffect } from 'react';
 import { parseISO, format, isBefore, isAfter } from 'date-fns';
 import { Talk } from '@lib/types';
 import styles from './talk-card.module.css';
+import { urlFor } from '@lib/cms-api';
 
 type Props = {
   key: string;
@@ -66,7 +67,7 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
                       loading="lazy"
                       alt={s.name}
                       className={styles.avatar}
-                      src={s.image.url}
+                      src={urlFor(s.image).width(24).height(24).url()}
                       title={s.name}
                       width={24}
                       height={24}

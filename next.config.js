@@ -14,9 +14,18 @@
  * limitations under the License.
  */
 
+ const STUDIO_REWRITE = {
+   source: '/studio/:path*',
+   destination:
+     process.env.NODE_ENV === 'development'
+       ? 'http://localhost:3333/studio/:path*'
+       : '/studio/index.html'
+ };
+
 module.exports = {
   images: {
-    domains: ['datocms-assets.com', 'www.datocms-assets.com'],
+    domains: ['cdn.sanity.io'],
     imageSizes: [24, 64, 300]
-  }
+  },
+  rewrites: () => [STUDIO_REWRITE]
 };

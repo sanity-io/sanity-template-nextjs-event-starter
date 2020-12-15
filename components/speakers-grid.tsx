@@ -18,6 +18,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Speaker } from '@lib/types';
 import styles from './speakers-grid.module.css';
+import { urlFor } from '@lib/cms-api';
 
 type Props = {
   speakers: Speaker[];
@@ -32,7 +33,7 @@ export default function SpeakersGrid({ speakers }: Props) {
             <div className={styles.imageWrapper}>
               <Image
                 alt={speaker.name}
-                src={speaker.image.url}
+                src={urlFor(speaker.image).width(300).height(300).url()}
                 className={styles.image}
                 loading="lazy"
                 quality="50"

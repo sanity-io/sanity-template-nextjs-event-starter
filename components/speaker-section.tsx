@@ -20,6 +20,7 @@ import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
 import { Speaker } from '@lib/types';
 import styles from './speaker-section.module.css';
+import { urlFor } from '@lib/cms-api';
 
 const TwitterIcon = () => (
   <svg width={24} viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +60,7 @@ export default function SpeakerSection({ speaker }: Props) {
         <Image
           alt={speaker.name}
           title={speaker.name}
-          src={speaker.image.url}
+          src={urlFor(speaker.image).width(300).height(400).url()}
           className={styles.image}
           loading="lazy"
           height={400}
