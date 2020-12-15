@@ -5,15 +5,13 @@ export const BRAND_NAME = 'ACME';
 export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
 export const SITE_NAME = 'ACME Conf';
 export const META_DESCRIPTION =
-  'Check out this open source demo! Next.js developers can clone, deploy, and fully customize it for their event. Created by Vercel';
+  'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created by Vercel.';
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
-export const EMAIL = 'contact@example.com';
 export const DATE = 'October 27, 2020';
 export const SHORT_DATE = 'Oct 27 - 9:00am PST';
 export const FULL_DATE = 'Oct 27th 9am Pacific Time (GMT-7)';
-export const TWEET_TEXT =
-  'Just got my free ticket to #acmeconf, grab yours! Let’s build a better web with Acme.';
+export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
