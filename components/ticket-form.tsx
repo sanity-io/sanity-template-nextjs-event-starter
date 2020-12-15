@@ -19,7 +19,7 @@ import { scrollTo } from '@lib/smooth-scroll';
 import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
 import CheckIcon from '@components/icons/icon-check';
-import { SITE_ORIGIN, TicketGenerationState } from '@lib/constants';
+import { REPO, SITE_ORIGIN, TicketGenerationState } from '@lib/constants';
 import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import useConfData from '@lib/hooks/use-conf-data';
 import LoadingDots from './loading-dots';
@@ -34,6 +34,8 @@ type Props = {
   defaultUsername?: string;
   setTicketGenerationState: React.Dispatch<React.SetStateAction<TicketGenerationState>>;
 };
+
+const githubEnabled = Boolean(process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID);
 
 export default function Form({ defaultUsername = '', setTicketGenerationState }: Props) {
   const [username, setUsername] = useState(defaultUsername);
@@ -77,8 +79,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
 
         if (!process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID) {
           setFormState('error');
-          // Message for OS contributors
-          setErrorMsg('Only enabled for production deployments.');
+          setErrorMsg('GitHub OAuth App must be set up.');
           return;
         }
 
@@ -167,9 +168,16 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
           className={cn(
             formStyles.submit,
             formStyles['generate-with-github'],
-            formStyles[formState]
+            formStyles[formState],
+            {
+              [formStyles['not-allowed']]: !githubEnabled
+            }
           )}
-          disabled={formState === 'loading' || Boolean(username)}
+          disabled={
+            !process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID ||
+            formState === 'loading' ||
+            Boolean(username)
+          }
           onClick={() => {
             if (formRef && formRef.current && isMobileOrTablet()) {
               scrollTo(formRef.current, formRef.current.offsetHeight);
@@ -192,7 +200,23 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
             </span>
           ) : null}
         </button>
-        <p className={ticketFormStyles.description}>Only public info will be used.</p>
+        <p className={ticketFormStyles.description}>
+          {githubEnabled ? (
+            'Only public info will be used.'
+          ) : (
+            <>
+              GitHub OAuth app is required.{' '}
+              <a
+                href={REPO}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={ticketFormStyles['learn-more']}
+              >
+                Learn more.
+              </a>
+            </>
+          )}
+        </p>
       </div>
     </form>
   );

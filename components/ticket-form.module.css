@@ -63,3 +63,12 @@
     width: 100%;
   }
 }
+
+.learn-more {
+  color: #fff;
+}
+
+.learn-more:hover {
+  text-decoration: underline;
+  color: #fff;
+}
