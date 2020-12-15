@@ -79,27 +79,22 @@ We've included the defaults used for Next.js Conf. However, you are free to swit
 - Create `.env.local` and set `NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET`. You can copy `.env.local.example` or use [Vercel CLI](https://vercel.com/docs/cli#commands/env).
 - Finally, set `SITE_ORIGIN` env var as `http://localhost:3000`. This is required to get the OAuth popup to work locally.
 
-### Database
+### Test Database (Redis) Locally
 
-1. Install Redis using homebrew and launch it: `redis-server /usr/local/etc/redis.conf`
+1. Install Redis locally and launch it.
 2. Specify the following in `.env.local`
 
 ```
 REDIS_PORT=6379
 REDIS_URL=localhost
-REDIS_PASSWORD=bar
-REDIS_EMAIL_TO_ID_SECRET=foo
+REDIS_PASSWORD=
+REDIS_EMAIL_TO_ID_SECRET=foo # Come up with your own secret string
 ```
 
-3. In a separate terminal window, start the dev server and try registering for the event.
-4. In a separate terminal window, run `redis-cli` and inspect:
+> `REDIS_EMAIL_TO_ID_SECRET` will be used to create a hash of the email address, which will be used for the Redis key for each user data (i.e. `id:<hash>`). See `lib/redis.ts` for details.
 
-```
-keys *
-hgetall "id:<enter id>"
-```
-
-You should see the newly registered user.
+3. In a separate terminal window, start the Next.js dev server (`yarn dev`) and sign up using the registration form.
+4. In a separate terminal window, run Redis CLI and inspect the `id:<hash>` key. You should see the newly registered user.
 
 ### CMS
 
