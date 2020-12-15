@@ -1,7 +1,7 @@
 {
   "name": "Virtual Event Starter Kit",
   "description": "Fully customizable starter kit for your virtual event.",
-  "previewImage": "TODO",
+  "previewImage": "https://demo.vercel.events/twitter-card.png",
   "datocmsProjectId": "37685",
   "deploymentType": "vercel",
   "buildCommand": "npm run build",
