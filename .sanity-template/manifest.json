@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "title": "Next.js Virtual Event Starter Kit",
+  "description": "This virtual event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees.",
+  "previewMedia": {
+    "type": "image",
+    "src": ".sanity-template/screenshot.png",
+    "alt": "Frontend"
+  },
+  "technologies": [
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "url": "https://nextjs.org/"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "url": "https://vercel.com/"
+    }
+  ],
+  "deployment": {
+    "provider": "vercel",
+    "studio": {
+      "basePath": "/studio"
+    },
+    "envVars": {
+      "projectId": ["NEXT_PUBLIC_SANITY_PROJECT_ID"],
+      "dataset": ["NEXT_PUBLIC_SANITY_DATASET"]
+    },
+    "corsOrigins": [
+      {
+        "origin": "http://localhost:3000",
+        "allowCredentials": true
+      }
+    ]
+  }
+}
