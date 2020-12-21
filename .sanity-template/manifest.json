@@ -4,7 +4,7 @@
   "description": "Fully customizable starter kit for your virtual event.",
   "previewMedia": {
     "type": "image",
-    "src": "./frontend.png",
+    "src": ".sanity-template/frontend.png",
     "alt": "Frontend"
   },
   "technologies": [
