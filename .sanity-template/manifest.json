@@ -1,10 +1,10 @@
 {
   "version": 2,
   "title": "Next.js Virtual Event Starter Kit",
-  "description": "This virtual event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees.",
+  "description": "Fully customizable starter kit for your virtual event.",
   "previewMedia": {
     "type": "image",
-    "src": ".sanity-template/screenshot.png",
+    "src": "https://demo.vercel.events/twitter-card.png",
     "alt": "Frontend"
   },
   "technologies": [

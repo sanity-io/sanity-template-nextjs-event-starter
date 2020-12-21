@@ -1,5 +1,3 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvirtual-event-starter-kit&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Virtual%20Event%20Starter%20Kit&demo-description=Jumpstart%20your%20virtual%20event%20and%20scale%20to%20any%20size%20with%20Next.js%20and%20Vercel.&demo-url=https%3A%2F%2Fdemo.vercel.events%2F&demo-image=https%3A%2F%2Fdemo.vercel.events%2Fdeploy.png&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
-
 # Virtual Event Starter Kit
 
 This virtual event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees. It includes the following features:
@@ -10,6 +8,7 @@ This virtual event starter kit was used to run Next.js Conf 2020, which had almo
 - Ticket registration and generation
 - Speaker pages and bios
 - Schedule
+- Built-in CMS ([sanity.io](https://www.sanity.io)) for managing content
 
 This platform is built upon three principles:
 
@@ -22,7 +21,7 @@ This platform is built upon three principles:
 - Framework: [Next.js](https://nextjs.org)
   - [CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support)
   - [TypeScript](https://nextjs.org/docs/basic-features/typescript)
-- CMS: [DatoCMS](https://www.datocms.com)
+- CMS: [Sanity.io](https://www.sanity.io)
 - Videos: [YouTube](https://www.youtube.com)
 - Deployment: [Vercel](https://vercel.com)
 
@@ -31,12 +30,22 @@ This platform is built upon three principles:
 First, run the development server:
 
 ```bash
-yarn dev
+vercel dev
+```
+
+or
+
+```bash
+PORT=3000 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+Open [http://localhost:3000/studio](http://localhost:3000/studio) or [http://localhost:3333](http://localhost:3000) to open Sanity Studio locally.
+
+You can start editing the content models and fields in `studio/schema/`.
 
 ## Learn More
 
@@ -44,20 +53,18 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Sanity.io Documentation](https://www.sanity.io/docs) - documentation for Sanity.io
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy Your Own
 
-We've included a read-only DatoCMS access token so you can clone and deploy without setting up your own CMS. However, there are a few steps you'll need to complete before launching your event.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvirtual-event-starter-kit&project-name=virtual-event-starter-kit&repository-name=virtual-event-starter-kit&demo-title=Virtual%20Event%20Starter%20Kit&demo-description=Jumpstart%20your%20virtual%20event%20and%20scale%20to%20any%20size%20with%20Next.js%20and%20Vercel.&demo-url=https%3A%2F%2Fdemo.vercel.events%2F&demo-image=https%3A%2F%2Fdemo.vercel.events%2Fdeploy.png&integration-ids=oac_I1h8Dm9Mf30VNb3xQ0hebYvS&external-id={%22githubRepo%22:%20%22vercel/virtual-event-starter-kit%22})
+You can deploy this starter from [create.sanity.io](https://create.sanity.io/?template=sanity-template-nextjs-event). It will include a dataset with example content. To start from scratch with your own content you can delete the dataset and create a new one with the name `production`.
 
 You'll need to customize this starter kit to your needs. There are three pieces you'll want to choose:
 
 - Authentication (defaults to [GitHub OAuth](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app))
 - Database (defaults to [Redis](https://redis.io/))
-- CMS (defaults to [DatoCMS](https://www.datocms.com/))
 
 We've included the defaults used for Next.js Conf. However, you are free to switch these as you see fit.
 
@@ -95,13 +102,6 @@ REDIS_EMAIL_TO_ID_SECRET=foo # Come up with your own secret string
 
 3. In a separate terminal window, start the Next.js dev server (`yarn dev`) and sign up using the registration form.
 4. In a separate terminal window, run Redis CLI and inspect the `id:<hash>` key. You should see the newly registered user.
-
-### CMS
-
-The default example uses DatoCMS. We also have examples for:
-
-- [AgilityCMS]()
-- [Contentful]()
 
 ## About
 

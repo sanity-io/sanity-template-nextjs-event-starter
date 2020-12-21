@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+ // Let's you access Sanity Studio on /studio on the main site
  const STUDIO_REWRITE = {
    source: '/studio/:path*',
    destination:
