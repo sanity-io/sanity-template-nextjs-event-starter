@@ -4,7 +4,7 @@
   "description": "Fully customizable starter kit for your virtual event.",
   "previewMedia": {
     "type": "image",
-    "src": "https://demo.vercel.events/twitter-card.png",
+    "src": "./frontend.png",
     "alt": "Frontend"
   },
   "technologies": [

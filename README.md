@@ -1,5 +1,7 @@
 # Virtual Event Starter Kit
 
+[Live demo](sanity-template-nextjs-event-starter.vercel.app)
+
 This virtual event starter kit was used to run Next.js Conf 2020, which had almost 40,000 live attendees. It includes the following features:
 
 - Multiple stages with an embedded YouTube stream
