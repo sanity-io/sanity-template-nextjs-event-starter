@@ -37,7 +37,7 @@ const config = {
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
   useCdn: process.env.NODE_ENV === 'production'
   /**
    * Set useCdn to `false` if your application require the freshest possible
@@ -53,32 +53,32 @@ export const previewClient = createClient({
   token: process.env.SANITY_API_TOKEN
 })
 
-export const getClient = usePreview =>
+export const getClient = (usePreview?: Boolean) =>
   usePreview ? previewClient : sanityClient
 
-export const urlFor = source => createImageUrlBuilder(config).image(source)
+export const urlFor = (source: String | Object) => createImageUrlBuilder(config).image(source)
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config)
 
 
-export async function getAllSpeakers(preview: Boolean) {
+export async function getAllSpeakers(preview?: Boolean) {
   const data = await getClient(preview).fetch(getAllSpeakersQuery)
   return data
 }
 
-export async function getAllStages(preview: Boolean) {
+export async function getAllStages(preview?: Boolean) {
   const data = await getClient(preview).fetch(getAllStagesQuery)
 
   return data
 }
 
-export async function getAllSponsors(preview: Boolean) {
+export async function getAllSponsors(preview?: Boolean) {
   const data = await getClient(preview).fetch(getAllSponsorsQuery)
 
   return data
 }
 
-export async function getAllJobs(preview: Boolean) {
+export async function getAllJobs(preview?: Boolean) {
   const data = await getClient(preview).fetch(getAllJobsQuery)
 
   return data

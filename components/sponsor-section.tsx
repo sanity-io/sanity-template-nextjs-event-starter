@@ -62,7 +62,7 @@ export default function SponsorSection({ sponsor }: Props) {
           <div className={styles['name-and-logo']}>
             <Image
               alt={sponsor.name}
-              src={urlFor(sponsor.logo).width(64).height(64).url()}
+              src={urlFor(sponsor.logo).width(64).height(64).url() || ''}
               className={styles.image}
               loading="lazy"
               title={sponsor.name}

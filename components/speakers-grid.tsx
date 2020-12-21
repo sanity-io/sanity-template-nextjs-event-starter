@@ -33,7 +33,7 @@ export default function SpeakersGrid({ speakers }: Props) {
             <div className={styles.imageWrapper}>
               <Image
                 alt={speaker.name}
-                src={urlFor(speaker.image).width(300).height(300).url()}
+                src={urlFor(speaker.image).width(300).height(300).url() || ''}
                 className={styles.image}
                 loading="lazy"
                 quality="50"
