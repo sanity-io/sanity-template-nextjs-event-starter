@@ -16,7 +16,10 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug'
+      title: 'Slug',
+      options: {
+        source: 'name'
+      }
     },
     {
       name: 'website',

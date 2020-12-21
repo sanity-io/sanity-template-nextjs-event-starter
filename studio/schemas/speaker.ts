@@ -5,8 +5,16 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'company',
+      company: 'company.name',
+      professionalTitle: 'title',
       media: 'image'
+    },
+    prepare: ({title, company = '', professionalTitle = '', media}) => {
+      return {
+        title,
+        media,
+        subtitle: `${professionalTitle} @ ${company}`
+      }
     }
   },
   fields: [
@@ -23,7 +31,10 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug'
+      title: 'Slug',
+      options: {
+        source: 'name'
+      }
     },
     {
       name: 'title',
@@ -42,8 +53,11 @@ export default {
     },
     {
       name: 'company',
-      type: 'string',
-      title: 'Company'
+      type: 'reference',
+      title: 'Company',
+      to: [{
+        type: 'company'
+      }]
     },
     {
       name: 'image',

@@ -24,7 +24,7 @@ export default {
       title: 'Description'
     },
     {
-      name: 'speaker',
+      name: 'speakers',
       type: 'array',
       title: 'Speakers',
       of: [
@@ -38,5 +38,20 @@ export default {
         }
       ]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      start: 'start',
+      end: 'end',
+      firstSpeakerImage: 'speakers.0.image'
+    },
+    prepare: ({title, start, end, firstSpeakerImage}) => {
+      return {
+        title,
+        media: firstSpeakerImage,
+        subtitle: `${new Date(start).toLocaleTimeString()} – ${new Date(end).toLocaleTimeString()}`
+      }
+    }
+  }
 }

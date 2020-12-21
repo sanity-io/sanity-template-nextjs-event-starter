@@ -21,43 +21,35 @@ import Schedule from '@components/schedule';
 import Layout from '@components/layout';
 import Header from '@components/header';
 
-import { getAllStages,usePreviewSubscription } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
-import { getAllStagesQuery } from '@lib/queries';
+import { getAllStages } from '@lib/cms-api';
 
 type Props = {
   allStages: Stage[];
 };
 
-export default function SchedulePage({ allStages, preview }: Props) {
+export default function SchedulePage({ allStages }: Props) {
   const meta = {
     title: 'Schedule - Virtual Event Starter Kit',
     description: META_DESCRIPTION
   };
 
-  const {data: allStagesData} = usePreviewSubscription(getAllStagesQuery, {
-    params: {slug: allStages.slug},
-    initialData: allStages,
-    enabled: preview,
-  })
-
   return (
     <Page meta={meta}>
       <Layout>
         <Header hero="Schedule" description={meta.description} />
-        <Schedule allStages={allStagesData} />
+        <Schedule allStages={allStages} />
       </Layout>
     </Page>
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (preview: Boolean = false) => {
-  const allStages = await getAllStages(preview);
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const allStages = await getAllStages();
 
   return {
     props: {
-      preview: true,
       allStages
     },
     revalidate: 60

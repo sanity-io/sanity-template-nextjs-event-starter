@@ -34,7 +34,7 @@ const formatDate = (date: string) => {
   return format(parseISO(date), "h:mmaaaaa'm'");
 };
 
-export default function TalkCard({ talk: { title, speaker, start, end }, showTime }: Props) {
+export default function TalkCard({ talk: { title, speakers = [], start, end }, showTime }: Props) {
   const [isTalkLive, setIsTalkLive] = useState(false);
   const [startAndEndTime, setStartAndEndTime] = useState('');
 
@@ -44,7 +44,7 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
     setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)}`);
   }, []);
 
-  const firstSpeakerLink = `/speakers/${speaker[0].slug}`;
+  const firstSpeakerLink = `/speakers/${speakers[0]?.slug}`;
 
   return (
     <div key={title} className={styles.talk}>
@@ -61,7 +61,7 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
             </h4>
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
-                {speaker.map(s => (
+                {speakers.map(s => (
                   <div key={s.name} className={styles['avatar-wrapper']}>
                     <Image
                       loading="lazy"
@@ -76,7 +76,7 @@ export default function TalkCard({ talk: { title, speaker, start, end }, showTim
                 ))}
               </div>
               <h5 className={styles.name}>
-                {speaker.length === 1 ? speaker[0].name : `${speaker.length} speakers`}
+                {speakers.length === 1 ? speakers[0].name : `${speakers.length} speakers`}
               </h5>
             </div>
           </div>

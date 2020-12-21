@@ -7,8 +7,8 @@ export const getAllSpeakersQuery = groq`*[_type == "speaker"]{
         "slug": slug.current,
         twitter,
         github,
-        company,
-        "talk": *[_type == "talk" && ^._id in speakers[]._ref]{
+        "company": company->name,
+        "talk": *[_type == "talk" && ^._id in speakers[]._ref][0]{
           title,
           description
         },
@@ -24,7 +24,7 @@ export const getAllStagesQuery = groq`*[_type == "stage"]{
           title,
           start,
           end,
-          speaker[]->{
+          speakers[]->{
             name,
             "slug": slug.current,
             image
