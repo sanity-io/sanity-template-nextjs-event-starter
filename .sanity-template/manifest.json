@@ -7,8 +7,7 @@
     "src": ".sanity-template/frontend.png",
     "alt": "Frontend"
   },
-  "technologies": [
-    {
+  "technologies": [{
       "id": "nextjs",
       "name": "Next.js",
       "url": "https://nextjs.org/"
@@ -24,15 +23,17 @@
     "studio": {
       "basePath": "/studio"
     },
+    "deployHook": {
+      "name": "Production deployment hook",
+      "envVars": ["SANITY_STUDIO_BUILD_HOOK"]
+    },
     "envVars": {
       "projectId": ["NEXT_PUBLIC_SANITY_PROJECT_ID"],
       "dataset": ["NEXT_PUBLIC_SANITY_DATASET"]
     },
-    "corsOrigins": [
-      {
-        "origin": "http://localhost:3000",
-        "allowCredentials": true
-      }
-    ]
+    "corsOrigins": [{
+      "origin": "http://localhost:3000",
+      "allowCredentials": true
+    }]
   }
 }
