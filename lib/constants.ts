@@ -21,7 +21,7 @@ export const COPYRIGHT_HOLDER = process.env.NEXT_PUBLIC_COPYRIGHT_HOLDER;
 
 export const CODE_OF_CONDUCT =
   'https://www.notion.so/vercel/Code-of-Conduct-Example-7ddd8d0e9c354bb597a0faed87310a78';
-export const REPO = 'https://github.com/sanity-io/sanity-template-nextjs-event';
+export const REPO = 'https://github.com/sanity-io/sanity-template-nextjs-event-starter';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
