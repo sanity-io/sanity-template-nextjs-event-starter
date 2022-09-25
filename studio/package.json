@@ -1,7 +1,7 @@
 {
   "name": "sanitytemplatecontent",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "package.json",
   "author": "Knut Melvær <knut@sanity.io>",
@@ -22,8 +22,8 @@
     "@sanity/desk-tool": "^2.1.2",
     "@sanity/vision": "^2.1.0",
     "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0"
+    "react": "^18.2",
+    "react-dom": "^18.2"
   },
   "devDependencies": {},
   "repository": {
