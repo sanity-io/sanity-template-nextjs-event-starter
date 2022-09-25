@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "@reach/skip-nav": "0.12.1",
-    "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/client": "^2.1.0",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/client": "^3.0.0",
     "chrome-aws-lambda": "^5.5.0",
     "classnames": "2.2.6",
     "cookie": "^0.4.1",
